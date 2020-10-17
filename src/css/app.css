@@ -1,0 +1,31 @@
+body{
+	background-color: #e8e8e8;
+}
+
+@font-face{
+	font-family:chicken;
+	src:url('../../assets/fonts/Chicken Quiche.ttf');
+}
+
+@font-face{
+	font-family:paper;
+	src:url('../../assets/fonts/Paper Flowers.ttf');
+}
+@font-face{
+	font-family:rainbow;
+	src:url('../../assets/fonts/Rainbow Universe.ttf');
+}
+@font-face{
+	font-family:sweet;
+	src:url('../../assets/fonts/sweet purple.ttf');
+}
+
+@font-face{
+	font-family:future;
+	src:url('../../assets/fonts/FUTRFW.ttf');
+}
+
+@font-face{
+	font-family:vogue;
+	src:url('../../assets/fonts/Vogue.ttf');
+}

@@ -1,30 +1,72 @@
 <?php
   include 'user.php';
+  session_start();
 
   if(isset($_COOKIE['username'])) {
     $user_db = new user();
     $user_db->relogin($_COOKIE['username']);
     header('location:homepage.php');
+  } else{
+    echo '<script language="javascript">';
+
+    if ($_COOKIE['login'] == '1'){
+      echo 'alert("You  have to login first")';
+    } else if ($_COOKIE['login']=='2') {
+      echo 'alert("Username or password does not match")';
+
+    } else if($_COOKIE['login']=='3'){
+      echo 'alert("Register completed!")';
+    }
+    echo '</script>';
+
+    setcookie('login','',0,'/');
+
+    
   }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="/src/css/user.css">
+    <link rel="stylesheet" href="/src/css/app.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
 </head>
 <body>
-    <center>
-    <h1>Willy Wangko Choco Factory</h1>
-    <form action="../php/action_login.php" method="post">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username"><br><br>
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password"><br><br>
-      <input type="submit" value="Submit">
+    <div class="title">Willy Wangko Choco Factory</div>
+    <div class="form">
+      <form action="../php/action_login.php" method="post">
+        <div class="row">
+          <div class="column">
+            <label for="username">Username</label>
+          </div>
+          <div class="column">
+            <input type="text" id="username" name="username"><br><br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <label for="password">Password</label>
+          </div>
+          <div class="column">
+            <input type="password" id="password" name="password"><br><br>
+          </div>
+        </div>
+        <br>
+        <br>
+        <div style="text-align: right;">      
+          <input type="submit" value="Login">
+          <br>
+          <a href="./register.php">
+            New user?
+            <span style="text-decoration: underline;">
+              Create an account
+            </span>
+          </a>
+        </div>
     </form>
-    </center>
+  </div>
 </body>
 </html>

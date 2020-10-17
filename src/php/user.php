@@ -19,19 +19,14 @@ class user{
  
 	function login($username,$password)
 	{
-		$query = "select * from user where username='$username'";
-		$result = $this->connection->query($query);
-		if(!is_null($result)){
-			echo "halo";
+		$result = $this->connection->query("select * from user where username='$username' and password='$password'");
+		if($result->num_rows >0){
 
-			if(strcmp($password,$user['password']))
-			{
+			
 			setcookie('username', $username, time() + (86400 * 30), '/');
-				
+			
 			return TRUE;
-		}
-			} else {
-				echo "gaada";
+		} else {
 				return FALSE;
 		}
 		
@@ -45,6 +40,24 @@ class user{
 				
 		$_SESSION['username'] = $username;
 		return TRUE;
+	}
+	function checkUsername($username){
+		$result = $this->connection->query("select * from user where username='$username'");
+		if ($result->num_rows===0){
+			return TRUE;
+		} else{
+			return FALSE;
+		}
+
+	}
+
+	function checkEmail($email){
+		$result = $this->connection->query("select * from user where email='$email'");
+		if ($result->num_rows===0){
+			return TRUE;
+		} else{
+			return FALSE;
+		}
 	}
 	
 } 

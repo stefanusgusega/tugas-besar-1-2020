@@ -1,8 +1,9 @@
 <?php
   include 'user.php';
-
   if(!isset($_COOKIE['username'])) {
-    header('location:wait.php');
+    setcookie('login', '1', time() +  (3000), '/');
+
+    header('location:login.php');
   } 
 
 ?>
@@ -15,6 +16,9 @@
     <title>Homepage</title>
 </head>
 <body>
+  <a href="../php/logout.php">
+    LOGOUT
+  </a>
     <h1>HOMEPAGE</h1>
 </body>
 </html>

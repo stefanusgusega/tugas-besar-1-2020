@@ -6,16 +6,34 @@
 	$email = $_POST['email'];
     $password = $_POST['password'];
     $confirmation = $_POST['confpassword'];
+    $uname = $_POST['uname'];
+    $em = $_POST['em'];
+   	$user_db = new user();
 
-    if (!$password.strcmp($confirmation)) {
-    	alert("password tidak sama");
-    }
-    $user_db = new user();
+    if (is_null($uname) && is_null($em)){
 
-    if($user_db->register($username,$email,$password)){
-    	echo "<div style='margin: auto 0; text-align:center;'><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>Register completed!<br><br><a href='register.php'>Login to access the page</a></div>";
+	    if($user_db->register($username,$email,$password)){
+	    	setcookie('login', '3', time() +  (3000), '/');
+
+	   		header('location:login.php');
+	    
+	    }
+    } else if (!is_null($uname)){
+
+    	if ($user_db->checkUsername($uname)){
+    		echo 1;
+    	} else{
+    		echo 0;
+    	}
+
     } else {
-    	echo "<div style='margin: auto 0; text-align:center;'><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>Email or username already exists<br><br><a href='register.php'>Click here to return to the register page.</a><br><a href='login.php'>Try a shot?</a></div>";
+    	if ($user_db->checkEmail($em)){
+    		echo 1;
+    	} else {
+    		echo 0;
+    	}
     }
+    
+    
 ?>
 
