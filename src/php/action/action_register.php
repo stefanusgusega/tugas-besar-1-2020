@@ -1,14 +1,12 @@
 <?php
-	include 'user.php';
-
-	# Take register info
+	include 'database.php';
 	$username = $_POST['username'];
 	$email = $_POST['email'];
     $password = $_POST['password'];
     $confirmation = $_POST['confpassword'];
     $uname = $_POST['uname'];
     $em = $_POST['em'];
-   	$user_db = new user();
+   	$user_db = new database();
 
     if (is_null($uname) && is_null($em)){
 

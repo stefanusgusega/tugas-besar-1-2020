@@ -1,62 +1,54 @@
 <?php
-  include 'user.php';
-  session_start();
+  include './action/database.php';
 
   if(isset($_COOKIE['username'])) {
-    $user_db = new user();
-    $user_db->relogin($_COOKIE['username']);
-    header('location:homepage.php');
-  } else{
-    echo '<script language="javascript">';
-
-    if ($_COOKIE['login'] == '1'){
-      echo 'alert("You  have to login first")';
-    } else if ($_COOKIE['login']=='2') {
-      echo 'alert("Username or password does not match")';
-
-    } else if($_COOKIE['login']=='3'){
-      echo 'alert("Register completed!")';
+    $user_db = new database();
+    if($user_db->relogin($_COOKIE['username'])){
+      header('location:homepage.php');
     }
-    echo '</script>';
+  } else if (isset($_COOKIE['login'])) {
+      echo '<script language="javascript">';
 
-    setcookie('login','',0,'/');
+      if ($_COOKIE['login'] == '1'){
+        echo 'alert("You  have to login first")';
+      } else if ($_COOKIE['login']=='2') {
+        echo 'alert("Username or password does not match")';
 
+      } else if($_COOKIE['login']=='3'){
+        echo 'alert("Register completed!")';
+      }
+      echo '</script>';
+
+      setcookie('login','',0,'/');
+
+
+
+    }
+
+  
     
-  }
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="/src/css/user.css">
+    <link rel="stylesheet" href="/src/css/form.css">
     <link rel="stylesheet" href="/src/css/app.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
 </head>
-<body>
+<body class="center-screen">
     <div class="title">Willy Wangko Choco Factory</div>
     <div class="form">
-      <form action="../php/action_login.php" method="post">
-        <div class="row">
-          <div class="column">
-            <label for="username">Username</label>
-          </div>
-          <div class="column">
-            <input type="text" id="username" name="username"><br><br>
-          </div>
-        </div>
-        <div class="row">
-          <div class="column">
-            <label for="password">Password</label>
-          </div>
-          <div class="column">
-            <input type="password" id="password" name="password"><br><br>
-          </div>
-        </div>
-        <br>
-        <br>
-        <div style="text-align: right;">      
+      <form action="../php/action/action_login.php" method="post">
+       
+        <input type="text" id="username" name="username" placeholder="USERNAME" required><br><br>
+  
+        <input type="password" id="password" name="password" placeholder="PASSWORD" required><br><br>
+          <br>
+        <div style="text-align: center;">      
           <input type="submit" value="Login">
           <br>
           <a href="./register.php">
