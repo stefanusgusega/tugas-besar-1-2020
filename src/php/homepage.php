@@ -1,12 +1,12 @@
 <?php
   include './action/database.php';
-  $user_db = new database();
   if(!isset($_COOKIE['username'])) {
     setcookie('login', '1', time() +  (3000), '/');
 
     header('location:login.php');
   } else {
-    if ($user_db->relogin($_COOKIE['username'])){
+    $user_db = new database();
+    if(!$user_db->relogin($_COOKIE['username'])){
       header('location:login.php');
     }
   }

@@ -24,7 +24,7 @@
     <div class="title">Willy Wangko Choco Factory</div>
 
     <div class="form">
-    <form action="/action/action_register.php" method="post" onsubmit="return validateForm()" >
+    <form action="../php/action/action_register.php" method="post" onsubmit="return validateForm()" >
       <input type="text" pattern="[\w]+" id="username" name="username"  onblur="checkUsername('username')" placeholder="USERNAME" required>
       <div class="info">
       Only letters, numbers and underscores allowed
@@ -83,6 +83,7 @@
     }
     if (box.value!=''){
       if(box.value.match(patt)){
+        
          var xmlhttp = new XMLHttpRequest();
           xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -104,7 +105,7 @@
               }
             }
           };
-          xmlhttp.open("POST", "action_register.php", true);
+          xmlhttp.open("POST", "./action/action_register.php", true);
           xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
           xmlhttp.send(cred);
 

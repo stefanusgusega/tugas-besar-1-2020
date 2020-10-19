@@ -13,9 +13,11 @@
 	    if($user_db->register($username,$email,$password)){
 	    	setcookie('login', '3', time() +  (3000), '/');
 
-	   		header('location:login.php');
+	   		header('location:../login.php');
 	    
-	    }
+	    } else {
+            header('location:../register.php');
+        }
     } else if (!is_null($uname)){
 
     	if ($user_db->checkUsername($uname)){

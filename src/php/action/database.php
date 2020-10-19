@@ -2,9 +2,9 @@
 class database{
 	public $host = "localhost";
 	// default username to connect database with xampp
-	public $username = "root";
+	public $username = "wbd";
 	// default password to connect database with xampp
-	public $password = "";
+	public $password = "12345678";
 	public $database = "wbd";
 	public $connection;
  
@@ -29,8 +29,9 @@ class database{
 
 	function register($username,$email,$password)
 	{	
-		$insert = mysqli_query($this->connection,"insert into user values ('$username','$email','$password','0')");
-		return $insert;
+		$result = $this->connection->query("insert into user values ('$username','$email','$password','0',NULL)");
+
+		return $result;
 	}
  
 	function login($username,$password)
@@ -66,17 +67,24 @@ class database{
 	
 	function relogin($cookie){
 
-		// $query = mysqli_query($this->connection,"select * from user where cookie='$cookie'");
-		$sql = "select * from user where cookie='$cookie'";
-		$result = $this->connection->query($sql);
+		$result = $this->connection->query("select * from user where cookie='$cookie'");
 
-		if (!empty($result) && $result->num_rows > 0){
+		if ($result->num_rows > 0){
+
 			setcookie('username', $cookie, time() + (86400 * 30), '/');
 			return TRUE;
 		} else {
 			return FALSE;
 		}
 		
+	}
+	function logout($cookie){
+		$sql =  mysqli_query($this->connection,"update user set cookie=NULL where cookie='$cookie'");
+		if($sql){
+			return TRUE;
+		} else{
+			return FALSE;
+		}
 	}
 	function checkUsername($username){
 		$result = $this->connection->query("select * from user where username='$username'");
@@ -112,6 +120,8 @@ class database{
 			return false;
 		}
 	}
+
+
 	
 } 
 
