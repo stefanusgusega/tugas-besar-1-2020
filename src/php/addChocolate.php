@@ -8,8 +8,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" href="/src/css/app.css">
-	<link rel="stylesheet" href="/src/css/form.css">
+	<link rel="stylesheet" href="../css/app.css">
+	<link rel="stylesheet" href="..//css/form.css">
 
 
     <meta charset="UTF-8">

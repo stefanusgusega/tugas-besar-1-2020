@@ -9,12 +9,12 @@
   } else if (isset($_COOKIE['login'])) {
       echo '<script language="javascript">';
 
-      if ($_COOKIE['login'] == '1'){
+      if ($_COOKIE['login'] === '1'){
         echo 'alert("You  have to login first")';
-      } else if ($_COOKIE['login']=='2') {
+      } else if ($_COOKIE['login']==='2') {
         echo 'alert("Username or password does not match")';
 
-      } else if($_COOKIE['login']=='3'){
+      } else if($_COOKIE['login']==='3'){
         echo 'alert("Register completed!")';
       }
       echo '</script>';
@@ -32,8 +32,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="/src/css/form.css">
-    <link rel="stylesheet" href="/src/css/app.css">
+    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="../css/app.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">

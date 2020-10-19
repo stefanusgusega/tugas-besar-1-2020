@@ -1,8 +1,10 @@
 <?php 
 class database{
 	public $host = "localhost";
-	public $username = "wbd";
-	public $password = "12345678";
+	// default username to connect database with xampp
+	public $username = "root";
+	// default password to connect database with xampp
+	public $password = "";
 	public $database = "wbd";
 	public $connection;
  
@@ -61,10 +63,14 @@ class database{
 		
 	}
 
+	
 	function relogin($cookie){
 
-		$query = mysqli_query($this->connection,"select * from user where cookie='$cookie'");
-		if ($query->num_rows > 0){
+		// $query = mysqli_query($this->connection,"select * from user where cookie='$cookie'");
+		$sql = "select * from user where cookie='$cookie'";
+		$result = $this->connection->query($sql);
+
+		if (!empty($result) && $result->num_rows > 0){
 			setcookie('username', $cookie, time() + (86400 * 30), '/');
 			return TRUE;
 		} else {

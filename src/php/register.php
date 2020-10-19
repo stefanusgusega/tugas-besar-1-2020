@@ -12,8 +12,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="/src/css/form.css">
-    <link rel="stylesheet" href="/src/css/app.css">
+    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="../css/app.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -67,7 +67,7 @@
       alert("The passwords don't match!");
       return false;
     } else if (answer != '' || answer2 !=''){
-      alert("Choose another email or username!");
+      alert("Choose another email or username!" + answer + answer2);
       return false;
     }
 
