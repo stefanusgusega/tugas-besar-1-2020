@@ -1,7 +1,7 @@
 <?php
 
   if(isset($_COOKIE['username'])) {
-    header('location:homepage.php');
+    header('location:/homepage');
   } else {
     echo '<script language="javascript">';
     echo '</script>';
@@ -12,8 +12,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../css/form.css">
-    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="src/css/form.css">
+    <link rel="stylesheet" href="src/css/app.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -24,7 +24,7 @@
     <div class="title">Willy Wangko Choco Factory</div>
 
     <div class="form">
-    <form action="../php/action/action_register.php" method="post" onsubmit="return validateForm()" >
+    <form action="src/php/action/action_register.php" method="post" onsubmit="return validateForm()" >
       <input type="text" pattern="[\w]+" id="username" name="username"  onblur="checkUsername('username')" placeholder="USERNAME" required>
       <div class="info">
       Only letters, numbers and underscores allowed
@@ -44,7 +44,7 @@
       <div style="text-align:  center ">
         <input type="submit" value="Register">
         <br>
-        <a href="./login.php">
+        <a href="/login">
         Already have an 
         <span style="text-decoration: underline;">
           account?
@@ -105,7 +105,7 @@
               }
             }
           };
-          xmlhttp.open("POST", "./action/action_register.php", true);
+          xmlhttp.open("POST", "/src/php/action/action_register.php", true);
           xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
           xmlhttp.send(cred);
 

@@ -20,7 +20,7 @@
 
 .info{
 	text-align: left;	
-	padding:1% 0 3% 10%;
+	padding:1% 0 3% 5%;
 	font-size: 0.9vw;
 	color:#cdc9c3;
 	font-weight: bold;
@@ -35,11 +35,12 @@
 
 .warning{
 	font-size:1vw;
+	margin-left:5%;
 	color:red;
 }
 
 input[type=text], input[type=number], input[type=password]{
-	width: 80%;
+	width: 90%;
 	height:35px;
 	text-align: left;
 	margin:2% 0;
@@ -101,14 +102,15 @@ div a:hover{
 	opacity: 0.8;
 }
 textarea{
-	width:80.5%;
+	width:90.5%;
 	margin:3% 0;
 	padding: 3% 5% 0 5%;
 	font-family: "Times New Roman";
 	text-align: left;
-	max-width:80.5%;
-	min-width: 80.5%;
-	font-size:1vw;	
+	max-width:90.5%;
+	min-width: 90.5%;
+	font-size:1vw;
+	min-height: 20%;
 
 }
 ::-webkit-input-placeholder { /* Edge */

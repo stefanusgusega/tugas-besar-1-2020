@@ -1,10 +1,9 @@
 <?php
-  include './action/database.php';
 
   if(isset($_COOKIE['username'])) {
     $user_db = new database();
     if($user_db->relogin($_COOKIE['username'])){
-      header('location:homepage.php');
+      header('location:/homepage');
     }
   } else if (isset($_COOKIE['login'])) {
       echo '<script language="javascript">';
@@ -22,7 +21,6 @@
       setcookie('login','',0,'/');
 
 
-
     }
 
   
@@ -32,8 +30,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../css/form.css">
-    <link rel="stylesheet" href="../css/app.css">
+  <base href="/">
+    <link rel="stylesheet" href="/src/css/form.css">
+    <link rel="stylesheet" href="/src/css/app.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -42,7 +41,7 @@
 <body class="center-screen">
     <div class="title">Willy Wangko Choco Factory</div>
     <div class="form">
-      <form action="../php/action/action_login.php" method="post">
+      <form action="src/php/action/action_login.php" method="post">
        
         <input type="text" id="username" name="username" placeholder="USERNAME" required><br><br>
   
@@ -51,7 +50,7 @@
         <div style="text-align: center;">      
           <input type="submit" value="Login">
           <br>
-          <a href="./register.php">
+          <a href="/register">
             New user?
             <span style="text-decoration: underline;">
               Create an account

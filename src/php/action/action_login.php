@@ -7,12 +7,12 @@
     $user_db = new database();
     if ($user_db->login($username,$password)){
 
-    	header('location:../homepage.php');
+    	header('location:/homepage');
     } else{
 
     	setcookie('login', '2', time() +  (3000), '/');
 
-   		header('location:../login.php');
+   		header('location:/login');
     }
    
 ?>

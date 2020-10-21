@@ -81,6 +81,8 @@ class database{
 	function logout($cookie){
 		$sql =  mysqli_query($this->connection,"update user set cookie=NULL where cookie='$cookie'");
 		if($sql){
+			setcookie('username','',0,'/');
+			setcookie('superuser','',0, '/' );
 			return TRUE;
 		} else{
 			return FALSE;

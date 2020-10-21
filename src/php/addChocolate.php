@@ -8,8 +8,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" href="../css/app.css">
-	<link rel="stylesheet" href="..//css/form.css">
+	<link rel="stylesheet" href="src/css/app.css">
+	<link rel="stylesheet" href="src/css/form.css">
 
 
     <meta charset="UTF-8">
@@ -27,7 +27,7 @@
  		Add New Chocolate
  	</div>
  	<div class="form">
- 		<form action="../php/action/action_add.php" method="post"  enctype="multipart/form-data" onsubmit="return validateFile()">
+ 		<form action="src/php/action/action_add.php" method="post"  enctype="multipart/form-data" onsubmit="return validateFile()">
  			<input type="text" id="name" name="name" placeholder="Chocolate Name"required>
  			<input type="number" id="price" name="price" placeholder="Price" min=0 required>
  			<input type="number" id="amount" name="amount" placeholder="Amount" min=0 required>
@@ -59,7 +59,7 @@
 	        document.getElementById("navbar").innerHTML += xhttp.responseText;
 	    }
 	};
-	xhttp.open('GET', '../html/navbar.html', true); // note: link the footer.html
+	xhttp.open('GET', 'src/html/navbar.html', true); // note: link the footer.html
 	xhttp.send();
 	window.onload = function() {
 
@@ -98,7 +98,7 @@
 	}
 	<?php
 		if (isset($_COOKIE['add'])){
-			if ($_COOKIE['add'] == '0'){
+			if ($_COOKIE['add'] == '0' || $_COOKIE['add'] == 2){
 				echo 'document.getElementById("request").innerHTML = "Adding Failed"';
 		    } else if($_COOKIE['add'] == '1'){
 				echo 'document.getElementById("request").innerHTML = "New Chocolate Added"';
