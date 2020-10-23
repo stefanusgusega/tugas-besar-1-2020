@@ -1,4 +1,5 @@
 <?php
+  include './action/database.php';
 
   if(isset($_COOKIE['username'])) {
     $user_db = new database();
@@ -43,7 +44,7 @@
     <div class="form">
       <form action="src/php/action/action_login.php" method="post">
        
-        <input type="text" id="username" name="username" placeholder="USERNAME" required><br><br>
+        <input type="text" id="email" name="email" placeholder="EMAIL" required><br><br>
   
         <input type="password" id="password" name="password" placeholder="PASSWORD" required><br><br>
           <br>
