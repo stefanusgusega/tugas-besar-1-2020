@@ -29,7 +29,8 @@ body{
 
 }
 #right{
-	float:right;
+  float:right;
+  font-family: vogue;
 }
 
 #brand{
