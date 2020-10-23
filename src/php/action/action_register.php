@@ -1,14 +1,14 @@
 <?php
 	include_once 'database.php';
-	$username = $_POST['username'];
-	$email = $_POST['email'];
-    $password = $_POST['password'];
-    $confirmation = $_POST['confpassword'];
-    $uname = $_POST['uname'];
-    $em = $_POST['em'];
+	$username = isset($_POST['username']) ? $_POST['username'] : '';
+	$email = isset($_POST['email']) ? $_POST['email'] : '';
+    $password = isset($_POST['password']) ? $_POST['password'] : '';
+    $confirmation = isset($_POST['confpassword']) ? $_POST['confpassword'] : '';
+    $uname = isset($_POST['uname']) ? $_POST['uname'] : '';
+    $em = isset($_POST['em']) ? $_POST['em'] : '';
    	$user_db = new database();
 
-    if (is_null($uname) && is_null($em)){
+    if (!($uname) && !($em)){
 
 	    if($user_db->register($username,$email,$password)){
 	    	setcookie('login', '3', time() +  (3000), '/');
@@ -18,7 +18,7 @@
 	    } else {
             header('location:/register');
         }
-    } else if (!is_null($uname)){
+    } else if (($uname)){
 
     	if ($user_db->checkUsername($uname)){
     		echo 1;

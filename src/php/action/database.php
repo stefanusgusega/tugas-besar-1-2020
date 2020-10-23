@@ -1,10 +1,8 @@
 <?php 
 class database{
 	public $host = "localhost";
-	// default username to connect database with xampp
 	public $username = "root";
-	// default password to connect database with xampp
-	public $password = "";
+	public $password = "Stefanus02092000";
 	public $database = "wbd";
 	public $connection;
  

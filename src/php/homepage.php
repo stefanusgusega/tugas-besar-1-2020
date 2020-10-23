@@ -1,5 +1,6 @@
 <?php
   include_once 'src/php/action/database.php';
+  // include_once 'src/php/template/navbar.php';
   if(!isset($_COOKIE['username'])) {
     setcookie('login', '1', time() +  (3000), '/');
 
@@ -71,13 +72,8 @@
     <title>Homepage</title>
 </head>
 <body>
-  <div class="navbar">
-    <a id="brand">WWCF</a>
-    <a href="./homepage">Home</a>
-    <a id ="add"   href="#"></a>
-    <a id="history" href="./history"></a>
-    <a id="right" href="./logout">Logout</a>
-  </div><br><br><br>
+  <?php include_once 'src/php/template/navbar.php'?>
+  <br><br><br>
   <div class="home-body">
     <div id = "hello">
       Hello,
