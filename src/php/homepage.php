@@ -1,5 +1,5 @@
 <?php
-  include './action/database.php';
+  include_once 'src/php/action/database.php';
   if(!isset($_COOKIE['username'])) {
     setcookie('login', '1', time() +  (3000), '/');
 
@@ -13,71 +13,8 @@
 
 
 
-
 ?>
-<!-- <!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-* {
-  box-sizing: border-box;
-}
-
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-[class*="col-"] {
-  float:left;
-  padding: 15px;
-}
-
-.col-1 {width: 8.33%;}
-.col-2 {width: 16.66%;}
-.col-3 {width: 25%;}
-.col-4 {width: 33.33%;}
-.col-5 {width: 41.66%;}
-.col-6 {width: 50%;}
-.col-7 {width: 58.33%;}
-.col-8 {width: 66.66%;}
-.col-9 {width: 75%;}
-.col-10 {width: 83.33%;}
-.col-11 {width: 91.66%;}
-.col-12 {width: 100%;}
-
-html {
-  font-family: "Lucida Sans", sans-serif;
-}
-
-.header {
-  background-color: #9933cc;
-  color: #ffffff;
-  padding: 15px;
-}
-
-.menu ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.menu li {
-  padding: 8px;
-  margin-bottom: 7px;
-  height:150px;
-  color: #000000;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  text-align: center;
-
-}
-
-.menu li:hover {
-  background-color: #0099cc;
-}
-</style>
+<!-- INI CONTOH KODING WKWK 
 </head>
 <body>
 
@@ -126,7 +63,7 @@ html {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="src/css/user.css">
+    
     <link rel="stylesheet" href="src/css/app.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -134,33 +71,58 @@ html {
     <title>Homepage</title>
 </head>
 <body>
-  <div id="navbar">
+  <div class="navbar">
+    <a id="brand">WWCF</a>
+    <a href="./homepage">Home</a>
+    <a id ="add"   href="#"></a>
+    <a id="history" href="./history"></a>
+    <a id="right" href="./logout">Logout</a>
+  </div><br><br><br>
+  <div class="home-body">
+    <div id = "hello">
+      Hello,
+    </div>
+    <div id = "view-all-choco" href="./all-choco">
+      View all chocolates
+    </div>
+    <div class="row">
+      <div class="col-1 menu">
+        <ul>
+          <li>
+            Test1
+          </li>
+        </ul>
+      </div>
+    </div>
+
   </div>
+
 </body>
 <script type="text/javascript">
-  
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function(){
-      if (xhttp.readyState == 4 && xhttp.status == 200){
-          document.getElementById("navbar").innerHTML += xhttp.responseText;
-          alert(xhttp.responseText);
-      }
-  };
-  xhttp.open('GET', 'src/html/navbar.html', true); // note: link the footer.html
-  xhttp.send();
+
   window.onload = function() {
-
     <?php
-
-    if (($_COOKIE['superuser'])==='1'){
-      echo 'document.getElementById("add").innerHTML = "Add Chocolate";';
-      echo 'document.getElementById("add").href = "/add";';
-    } else{
-      echo 'document.getElementById("add").innerHTML = "History";';
-      echo 'document.getElementById("add").href = "/history";';
-    }
-
+      include_once 'src/php/action/database.php';
+      if ($_COOKIE['superuser']==1) {
+        echo 'document.getElementById("add").innerHTML = "Add Chocolate";';
+        echo 'document.getElementById("add").href = "/add";';
+        echo 'document.getElementById("history").style.display = "none";';
+      }
+      else{
+        echo 'document.getElementById("history").innerHTML = "History";';
+        echo 'document.getElementById("history").href = "/history";';
+        echo 'document.getElementById("add").style.display = "none";';
+        
+      }
+      $db = new database();
+      // show username
+      $username = $db->getUsername($_COOKIE['username']);
+      // $username = $_COOKIE['username'];
+      echo "document.getElementById(\"hello\").innerHTML += '$username'"; 
     ?>
+  
+
+    
   };
 
 </script>
