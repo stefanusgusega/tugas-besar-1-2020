@@ -1,4 +1,4 @@
-<?php
+ <?php
 
   if(isset($_COOKIE['username'])) {
     header('location:/homepage');
@@ -31,8 +31,9 @@
     </div>
       <input type="text" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email" onblur="checkUsername('email')" placeholder="EMAIL" required><br><br>
       <input type="password" id="password" name="password" placeholder="PASSWORD" required><br><br>
-      <input type="password" id="confpassword" name="confpassword" placeholder="PASSWORD CONFIRMATION" required><br><br>
- 
+      <input type="password" id="confpassword" name="confpassword" placeholder="PASSWORD CONFIRMATION" required>
+      <input type="hidden"  id="boolean" name="boolean" value="0" required>
+
       <div class="warning">
          <div id="answer" style="padding:0;margin:0;position: absolute;">
          </div>
@@ -67,7 +68,7 @@
       alert("The passwords don't match!");
       return false;
     } else if (answer != '' || answer2 !=''){
-      alert("Choose another email or username!" + answer + answer2);
+      alert("Choose another email or username!");
       return false;
     }
 
@@ -76,11 +77,14 @@
     var box = document.getElementById(id);
     if (id == "username"){
       var patt = /^[\w]+$/;
-      var cred = "uname=" + box.value;
+      var cred = "username=" + box.value;
+      var bool = cred +" &boolean=1";
     } else {
        var patt = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
-       var cred = "em=" +box.value;
+       var cred = "email=" +box.value;
+       var bool = cred +"&boolean=2";
     }
+    
     if (box.value!=''){
       if(box.value.match(patt)){
         
@@ -107,7 +111,7 @@
           };
           xmlhttp.open("POST", "/src/php/action/action_register.php", true);
           xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-          xmlhttp.send(cred);
+          xmlhttp.send(bool);
 
 
       } else{
