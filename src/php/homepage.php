@@ -45,7 +45,11 @@
 
 
     if (($_COOKIE['superuser'])==1){
-      echo 'document.getElementById("addChocolate").innerHTML = "Add Chocolate"';
+      echo 'document.getElementById("add").innerHTML = "Add Chocolate";';
+      echo 'document.getElementById("add").href = "/add";';
+    } else{
+      echo 'document.getElementById("add").innerHTML = "History";';
+      echo 'document.getElementById("add").href = "/history";';
     }
 
     ?>

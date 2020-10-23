@@ -34,13 +34,13 @@ class database{
 		return $result;
 	}
  
-	function login($username,$password)
+	function login($email,$password)
 	{
-		$result = $this->connection->query("select * from user where username='$username' and password='$password'");
+		$result = $this->connection->query("select * from user where email='$email' and password='$password'");
 		if($result->num_rows >0){
 			while (True){
 				$cookie = $this->generateCookie();
-				$query = mysqli_query($this->connection,"update user set cookie='$cookie' where username='$username'");
+				$query = mysqli_query($this->connection,"update user set cookie='$cookie' where email='$email'");
 				if (query){
 					break;
 				} else {
@@ -58,10 +58,7 @@ class database{
 			return TRUE;
 		} else {
 				return FALSE;
-		}
-		
-
-		
+		}	
 	}
 
 	
@@ -70,7 +67,6 @@ class database{
 		$result = $this->connection->query("select * from user where cookie='$cookie'");
 
 		if ($result->num_rows > 0){
-
 			setcookie('username', $cookie, time() + (86400 * 30), '/');
 			return TRUE;
 		} else {
