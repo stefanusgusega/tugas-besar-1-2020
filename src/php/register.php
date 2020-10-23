@@ -90,8 +90,8 @@
         
          var xmlhttp = new XMLHttpRequest();
           xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-              if(xmlhttp.responseText == 1){
+            if (this.readyState == 4 && this.status == 200) {
+              if(this.responseText == 1){
                 box.style.border ="2px solid green";
                   if (id=="username"){
                     document.getElementById("answer").innerHTML = "";
@@ -103,13 +103,14 @@
                 box.style.border="2px solid red";
                   if (id=="username"){
                     document.getElementById("answer").innerHTML = "Username already exists";
-                  } else{
+                  }
+                  else {
                     document.getElementById("answer2").innerHTML = "Email already exists";
                   }
               }
             }
           };
-          xmlhttp.open("POST", "/src/php/action/action_register.php", true);
+          xmlhttp.open("POST", "src/php/action/action_register.php", true);
           xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
           xmlhttp.send(bool);
 
@@ -132,8 +133,9 @@
         document.getElementById("answer2").innerHTML = '';
       }
     }
-    showMessage();
+    // showMessage();
 
   }
   </script>
 </html>
+

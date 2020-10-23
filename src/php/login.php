@@ -1,5 +1,7 @@
 <?php
 
+  include_once 'src/php/action/database.php';
+
   if(isset($_COOKIE['username'])) {
     $user_db = new database();
     if($user_db->relogin($_COOKIE['username'])){
