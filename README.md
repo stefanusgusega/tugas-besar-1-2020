@@ -270,6 +270,18 @@ sudo apt-get install php7.4-xxx
 ```
 sudo apt-get install php-mysql
 ```
+5. Restart Apache
+```
+sudo service apache2 restart
+```
+
+## Menjalankan server
+1. Buka root folder di project ini
+2. Jalankan command berikut di terminal
+```
+php -S 127.0.0.1:8000
+```
+3. Sudah terjalan!
 
 
 
