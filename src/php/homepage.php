@@ -78,19 +78,14 @@
     <div id = "hello">
       Hello,
     </div>
-    <div id = "view-all-choco" href="./all-choco">
+    <a href=./all-choco><div id = "view-all-choco">
       View all chocolates
-    </div>
-    <div class="row">
-      <div class="col-1 menu">
-        <ul>
-          <li>
-            Test1
-          </li>
-        </ul>
+    </div></a>
+    <div id = "menus">
+      <div class="row">
+      
       </div>
     </div>
-
   </div>
 
 </body>
@@ -113,8 +108,10 @@
       $db = new database();
       // show username
       $username = $db->getUsername($_COOKIE['username']);
+      $contents = $db->showChoc(10);
       // $username = $_COOKIE['username'];
-      echo "document.getElementById(\"hello\").innerHTML += '$username'"; 
+      echo "document.getElementById(\"hello\").innerHTML += '$username';"; 
+      echo "document.getElementById(\"menus\").innerHTML = '$contents';";
     ?>
   
 

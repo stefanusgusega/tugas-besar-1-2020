@@ -1,8 +1,8 @@
 <?php 
 class database{
 	public $host = "localhost";
-	public $username = "wbd";
-	public $password = "12345678";
+	public $username = "root";
+	public $password = "";
 	public $database = "wbd";
 	public $connection;
  
@@ -134,6 +134,40 @@ class database{
 	function getHistory($username){
 		$result = $this->connection->query("select productID, name, amount, total, timestamp, address from transaction, product where username = '$username' and id = productID");
 		return $result;
+	}
+
+	// HOMEPAGE
+
+	function showChoc($amount) {
+		$sort = $this->connection->query("select * from product where amountRemaining > 0 order by amountRemaining desc limit $amount");
+		// $sorted_arr = $sort->fetch_array();
+		$name_arr = array();
+		$innerHTML ='<div class="row">';
+		while ($row = $sort->fetch_array()) {
+			// array_push($name_arr,$row["name"]);
+			$innerHTML .= '<a href=./details.php>';
+			$innerHTML .= '<div class="col-1 menu">';
+			$innerHTML .= '<ul>';
+			$innerHTML .= '<li>';
+			$innerHTML .= '<img src=assets/images/';
+			$innerHTML .= $row["path"];
+			$innerHTML .= ' alt=photo>';
+			$innerHTML .= '</li>';
+			$innerHTML .= '<li id="name">';
+			$innerHTML .= $row["name"];
+			$innerHTML .= '</li>';
+			$innerHTML .= '<li id="amount-sold"> Amount sold: ';
+			$innerHTML .= $row["amountSold"];
+			$innerHTML .= '</li>';
+			$innerHTML .= '<li id="price"> Price: ';
+			$innerHTML .= $row["price"];
+			$innerHTML .= '</li>';
+			$innerHTML .= '</ul>';
+			$innerHTML .= '</div>';
+		}
+		$innerHTML .= '</div></a>';
+		return $innerHTML;
+		
 	}
 
 
