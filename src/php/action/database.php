@@ -2,9 +2,9 @@
 class database{
 	public $host = "localhost";
 	// default username to connect database with xampp
-	public $username = "wbd";
+	public $username = "root";
 	// default password to connect database with xampp
-	public $password = "12345678";
+	public $password = "";
 	public $database = "wbd";
 	public $connection;
  
@@ -119,6 +119,16 @@ class database{
 		else{
 			return false;
 		}
+	}
+
+	function getDataChocolate($keysearch_name){
+		$result = $this->connection->query("select * from product where name like '%$keysearch_name%'");
+		return $result;
+	}
+
+	function getHistory($username){
+		$result = $this->connection->query("select productID, name, amount, total, timestamp, address from transaction, product where username = '$username' and id = productID");
+		return $result;
 	}
 
 
