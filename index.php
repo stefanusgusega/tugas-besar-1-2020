@@ -3,6 +3,8 @@
     include './src/php/action/database.php';
     echo ' <link rel="stylesheet" href="../css/form.css">';
     echo '<link rel="stylesheet" href="../css/app.css">';
+    echo '<link rel="stylesheet" href="../css/table.css">';
+    echo '<link rel="stylesheet" href="../css/search_res.css">';
 
     switch ($request) {
         case '/' :
@@ -28,6 +30,9 @@
             break;
         case '/history' :
             require __DIR__ . '/src/php/history.php';
+            break;
+        case '/search_result' :
+            require __DIR__ . '/src/php/search_result.php';
             break;
         default:
             http_response_code(404);

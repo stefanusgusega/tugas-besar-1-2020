@@ -1,5 +1,5 @@
 <?php
-  include './action/database.php';
+  include_once 'src/php/action/database.php';
   if(!isset($_COOKIE['username'])) {
     setcookie('login', '1', time() +  (3000), '/');
 
@@ -14,7 +14,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="src/css/table.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -22,6 +22,8 @@
 </head>
 <body>
   <div id="navbar">
+    <?php include_once 'src/php/template/navbar.php'?>
+    <br><br><br>
   </div>
   <div class="page-title">
     <h2>Transaction History</h2>
@@ -66,6 +68,18 @@
           </tr>
           ";      
           }
+        } else {
+          echo
+            "
+            <tr id = \"info-detail-0\">
+            <th class = \"col-info\">-</th>
+            <th class = \"col-info\">-</th>
+            <th class = \"col-info\">-</th>
+            <th class = \"col-info\">-</th>
+            <th class = \"col-info\">-</th>
+            <th class = \"col-info\">-</th>
+          </tr>
+          ";     
         }
       ?>
     </table>
