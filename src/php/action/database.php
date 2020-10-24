@@ -146,7 +146,7 @@ class database{
 		while ($row = $sort->fetch_array()) {
 			// array_push($name_arr,$row["name"]);
 			// $innerHTML .= '<a href=details.php?id=';
-			$innerHTML .= '<a href=src/php/details.php?id=';
+			$innerHTML .= '<a href=./details/';
 			$innerHTML .= urlencode($row["id"]);
 			$innerHTML .= '>';
 			$innerHTML .= '<div class="col-1 menu">';
