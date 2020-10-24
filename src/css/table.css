@@ -32,7 +32,7 @@
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
-    font-family: Lato;
+    font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
 }
 #brand{
@@ -69,11 +69,11 @@ body{
 }
 .page-title{
     font-family: vogue;
-    margin-left: 20px;
-    text-align: center;
+    margin-left: 50px;
+    font-size: 20px;
 }
 .col-title{
-    font-family: raleway;
+    font-family: 'Times New Roman', Times, serif;
     background-color: #f2a07b;
     font-weight: bold;
     font-size: 15px;
@@ -81,14 +81,14 @@ body{
     padding-bottom: 8px;
 }
 .col-info{
-    font-family: raleway;
+    font-family: 'Times New Roman', Times, serif;
     background-color: #ffffff;
     font-size: 13px;
     padding-top: 3px;
     padding-bottom: 3px;
 }
 .row-info{
-    font-family: raleway;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 table, th, td {
@@ -104,5 +104,4 @@ tr{
 .transaction-history{
     margin-left: 12%;
     margin-right: 12%;
-    align-self: center;
 }

@@ -31,7 +31,6 @@
   </div>
   <div class="results">
     <?php
-      
       $input = $_POST['search'];
       if(empty($input)){
         echo "<h4>Anda harus mengetikkan sesuatu untuk mencari</h4>";
@@ -63,6 +62,10 @@
                 <div class=\"item-description\">$description</div>
               </div>
             </span>
+            <input type=\"submit\" value=\"BUY\">
+            <br>
+            
+            
             </div>";
           }
         } else {
