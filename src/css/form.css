@@ -61,7 +61,7 @@ input[type=text] .available{
 	border:red;
 }
 input[type=submit]{
-	font-family:"Times New Roman";
+	font-family:'Times New Roman';
 	background-color:#f2a07b;
 	border:none;
 	height:auto;
@@ -73,6 +73,7 @@ input[type=submit]{
 
 input[type=submit]:hover{
 	opacity: 0.8;
+	cursor: pointer;
 }
 
 div a {

@@ -1,8 +1,8 @@
 <?php 
 class database{
 	public $host = "localhost";
-	public $username = "wbd";
-	public $password = "12345678";
+	public $username = "root";
+	public $password = "Stefanus02092000";
 	public $database = "wbd";
 	public $connection;
  
@@ -157,7 +157,7 @@ class database{
 			$innerHTML .= ' alt=photo>';
 			$innerHTML .= '</li>';
 			$innerHTML .= '<li id="name">';
-			$innerHTML .= strtoupper($row["name"]);
+			$innerHTML .= $row["name"];
 			$innerHTML .= '</li>';
 			$innerHTML .= '<li id="amount-sold"> Amount sold: ';
 			$innerHTML .= $row["amountSold"];

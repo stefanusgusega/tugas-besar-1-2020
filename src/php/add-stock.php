@@ -1,6 +1,6 @@
 <?php
 // include_once 'src/php/action/database.php';
-include_once 'src/php/action/database.php'; // root nya jd details.php
+include_once './action/database.php'; // root nya jd details.php
 if(!isset($_COOKIE['username'])) {
   setcookie('login', '1', time() +  (3000), '/');
 
@@ -16,7 +16,8 @@ if(!isset($_COOKIE['username'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="/src/css/app.css">
+    
+    <link rel="stylesheet" href="../css/app.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -24,8 +25,8 @@ if(!isset($_COOKIE['username'])) {
 </head>
 <body>
   <?php //include_once 'src/php/template/navbar.php'?>
-  <?php include_once 'src/php/template/navbar.php'?>
-  <br><br><br>
+  <?php include_once './template/navbar.php'?>
+  <br><br><br><br><br><br>
   <div class="after-navbar-body">
     <div id = "details-name">
       
@@ -50,16 +51,16 @@ if(!isset($_COOKIE['username'])) {
     <div id = "details-desc">
         <b>Description</b><br><br>
     </div>
-    <a href=<?php echo './buy-now.php?id='.$_GET["id"];?>>
+    <form action="./buy-now.php" method="post">
         <button id="buy-now" >
-            
+        
         </button>
-    </a>
-    <a href=<?php echo './add-stock.php?id='.$_GET["id"];?>>
+    </form>
+    <form action="./add-stock.php" method="get">
         <button id="add-stock">
 
         </button>
-    </a>
+    </form>
   </div>
 
 </body>
@@ -67,8 +68,8 @@ if(!isset($_COOKIE['username'])) {
 
   window.onload = function() {
     <?php
-      include_once 'src/php/action/database.php';
-      // include_once './action/database.php';
+    //   include_once 'src/php/action/database.php';
+      include_once './action/database.php';
       if ($_COOKIE['superuser']==1) {
         echo 'document.getElementById("add").innerHTML = "Add Chocolate";';
         echo 'document.getElementById("add").href = "/add";';

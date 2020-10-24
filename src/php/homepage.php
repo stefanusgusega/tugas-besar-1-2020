@@ -48,7 +48,7 @@
 
   window.onload = function() {
     <?php
-      include_once '/src/php/action/database.php';
+      include_once 'src/php/action/database.php';
       if ($_COOKIE['superuser']==1) {
         echo 'document.getElementById("add").innerHTML = "Add Chocolate";';
         echo 'document.getElementById("add").href = "/add";';
