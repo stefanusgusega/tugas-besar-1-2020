@@ -145,7 +145,10 @@ class database{
 		$innerHTML ='<div class="row">';
 		while ($row = $sort->fetch_array()) {
 			// array_push($name_arr,$row["name"]);
-			$innerHTML .= '<a href=./details.php>';
+			// $innerHTML .= '<a href=details.php?id=';
+			$innerHTML .= '<a href=src/php/details.php?id=';
+			$innerHTML .= urlencode($row["id"]);
+			$innerHTML .= '>';
 			$innerHTML .= '<div class="col-1 menu">';
 			$innerHTML .= '<ul>';
 			$innerHTML .= '<li>';
@@ -154,7 +157,7 @@ class database{
 			$innerHTML .= ' alt=photo>';
 			$innerHTML .= '</li>';
 			$innerHTML .= '<li id="name">';
-			$innerHTML .= $row["name"];
+			$innerHTML .= strtoupper($row["name"]);
 			$innerHTML .= '</li>';
 			$innerHTML .= '<li id="amount-sold"> Amount sold: ';
 			$innerHTML .= $row["amountSold"];
@@ -168,6 +171,12 @@ class database{
 		$innerHTML .= '</div></a>';
 		return $innerHTML;
 		
+	}
+
+	function getChocDetails($id, $attr) {
+		$table = $this->connection->query("select $attr from product where id=$id");
+		$res=$table->fetch_array()[0];
+		return $res;
 	}
 
 

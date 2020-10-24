@@ -1,46 +1,37 @@
 <?php
-  include_once 'src/php/action/database.php';
-  // include_once 'src/php/template/navbar.php';
-  if(!isset($_COOKIE['username'])) {
-    setcookie('login', '1', time() +  (3000), '/');
+// include_once 'src/php/action/database.php';
+include_once './action/database.php'; // root nya jd details.php
+if(!isset($_COOKIE['username'])) {
+  setcookie('login', '1', time() +  (3000), '/');
 
+  header('location:/login');
+} else {
+  $user_db = new database();
+  if(!$user_db->relogin($_COOKIE['username'])){
     header('location:/login');
-  } else {
-    $user_db = new database();
-    if(!$user_db->relogin($_COOKIE['username'])){
-      header('location:/login');
-    }
   }
-
-
-
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     
-    <link rel="stylesheet" href="src/css/app.css">
+    <link rel="stylesheet" href="../css/app.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Homepage</title>
+    <title></title>
 </head>
 <body>
-  <?php include_once 'src/php/template/navbar.php'?>
-  <br><br><br><br>
+  <?php //include_once 'src/php/template/navbar.php'?>
+  <?php include_once './template/navbar.php'?>
+  <br><br><br>
   <div class="after-navbar-body">
-    <div id = "hello">
-      Hello,
-    </div>
-    <a href=./all-choco><div id = "view-all-choco">
-      View all chocolates
-    </div></a>
-    <div id = "menus">
-      <div class="row">
+    <div id = "details-name">
       
-      </div>
     </div>
+    
   </div>
 
 </body>
@@ -48,7 +39,8 @@
 
   window.onload = function() {
     <?php
-      include_once 'src/php/action/database.php';
+    //   include_once 'src/php/action/database.php';
+      include_once './action/database.php';
       if ($_COOKIE['superuser']==1) {
         echo 'document.getElementById("add").innerHTML = "Add Chocolate";';
         echo 'document.getElementById("add").href = "/add";';
@@ -61,12 +53,15 @@
         
       }
       $db = new database();
+      $id = $_GET["id"];
       // show username
-      $username = $db->getUsername($_COOKIE['username']);
-      $contents = $db->showChoc(10);
+    //   $username = $db->getUsername($_COOKIE['username']);
+    //   $contents = $db->showChoc(10);
       // $username = $_COOKIE['username'];
-      echo "document.getElementById(\"hello\").innerHTML += '$username';"; 
-      echo "document.getElementById(\"menus\").innerHTML = '$contents';";
+      $name = $db->getChocDetails($id,"name");
+      echo "document.getElementById(\"details-name\").innerHTML = '$name';";
+    //   echo "document.getElementById(\"hello\").innerHTML += '$username';"; 
+    //   echo "document.getElementById(\"menus\").innerHTML = '$contents';";
     ?>
   
 
