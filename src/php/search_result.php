@@ -1,21 +1,21 @@
 <?php
-  // include './action/acion_search.php';
-  // if(!isset($_COOKIE['username'])) {
-  //   setcookie('login', '1', time() +  (3000), '/');
+  include_once 'src/php/action/database.php';
+  if(!isset($_COOKIE['username'])) {
+    setcookie('login', '1', time() +  (3000), '/');
 
-  //   header('location:login.php');
-  // } else {
-  //   $user_db = new database();
-  //   if(!$user_db->relogin($_COOKIE['username'])){
-  //     header('location:login.php');
-  //   }
-  // }
+    header('location:login.php');
+  } else {
+    $user_db = new database();
+    if(!$user_db->relogin($_COOKIE['username'])){
+      header('location:login.php');
+    }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../css/app.css">
-    <link rel="stylesheet" href="../css/search_res.css">
+    <link rel="stylesheet" href="src/css/app.css">
+    <link rel="stylesheet" href="src/css/search_res.css">   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -23,17 +23,15 @@
 </head>
 <body>
   <div id="navbar">
+    <?php include_once 'src/php/template/navbar.php'?>
+    <br><br><br>
   </div>
-  <form action="search_result.php" method="POST">
-    <input type="text" name="search" placeholder="Search">
-    <button type="submit" name="submit-search">Search</button>
-  </form>
   <div class="page-title">
     <h2>Result</h2>
   </div>
   <div class="results">
     <?php
-      include './action/database.php';
+      
       $input = $_POST['search'];
       if(empty($input)){
         echo "<h4>Anda harus mengetikkan sesuatu untuk mencari</h4>";
@@ -76,18 +74,26 @@
   </div>
 </body>
 <script type="text/javascript">
+
+  window.onload = function() {
+    <?php
+      include_once 'src/php/action/database.php';
+      if ($_COOKIE['superuser']==1) {
+        echo 'document.getElementById("add").innerHTML = "Add Chocolate";';
+        echo 'document.getElementById("add").href = "/add";';
+        echo 'document.getElementById("history").style.display = "none";';
+      }
+      else{
+        echo 'document.getElementById("history").innerHTML = "History";';
+        echo 'document.getElementById("history").href = "/history";';
+        echo 'document.getElementById("add").style.display = "none";';
+        
+      }
+    ?>
   
-  // var xhttp = new XMLHttpRequest();
-  // xhttp.onreadystatechange = function(){
-  //     if (xhttp.readyState == 4 && xhttp.status == 200){
-  //         document.getElementById("navbar").innerHTML += xhttp.responseText;
-  //     }
-  // };
-  // xhttp.open('GET', '../html/navbar.html', true); // note: link the footer.html
-  // xhttp.send();
-  // window.onload = function() {
+
     
-  // }
+  };
 
 </script>
 </html>
