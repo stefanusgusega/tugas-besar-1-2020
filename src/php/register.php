@@ -1,7 +1,7 @@
-<?php
+ <?php
 
   if(isset($_COOKIE['username'])) {
-    header('location:homepage.php');
+    header('location:/homepage');
   } else {
     echo '<script language="javascript">';
     echo '</script>';
@@ -12,8 +12,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../css/form.css">
-    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="src/css/form.css">
+    <link rel="stylesheet" href="src/css/app.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -24,15 +24,16 @@
     <div class="title">Willy Wangko Choco Factory</div>
 
     <div class="form">
-    <form action="../php/action/action_register.php" method="post" onsubmit="return validateForm()" >
+    <form action="src/php/action/action_register.php" method="post" onsubmit="return validateForm()" >
       <input type="text" pattern="[\w]+" id="username" name="username"  onblur="checkUsername('username')" placeholder="USERNAME" required>
       <div class="info">
       Only letters, numbers and underscores allowed
     </div>
       <input type="text" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email" onblur="checkUsername('email')" placeholder="EMAIL" required><br><br>
       <input type="password" id="password" name="password" placeholder="PASSWORD" required><br><br>
-      <input type="password" id="confpassword" name="confpassword" placeholder="PASSWORD CONFIRMATION" required><br><br>
- 
+      <input type="password" id="confpassword" name="confpassword" placeholder="PASSWORD CONFIRMATION" required>
+      <input type="hidden"  id="boolean" name="boolean" value="0" required>
+
       <div class="warning">
          <div id="answer" style="padding:0;margin:0;position: absolute;">
          </div>
@@ -44,7 +45,7 @@
       <div style="text-align:  center ">
         <input type="submit" value="Register">
         <br>
-        <a href="./login.php">
+        <a href="/login">
         Already have an 
         <span style="text-decoration: underline;">
           account?
@@ -67,7 +68,7 @@
       alert("The passwords don't match!");
       return false;
     } else if (answer != '' || answer2 !=''){
-      alert("Choose another email or username!" + answer + answer2);
+      alert("Choose another email or username!");
       return false;
     }
 
@@ -76,18 +77,21 @@
     var box = document.getElementById(id);
     if (id == "username"){
       var patt = /^[\w]+$/;
-      var cred = "uname=" + box.value;
+      var cred = "username=" + box.value;
+      var bool = cred +" &boolean=1";
     } else {
        var patt = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
-       var cred = "em=" +box.value;
+       var cred = "email=" +box.value;
+       var bool = cred +"&boolean=2";
     }
+    
     if (box.value!=''){
       if(box.value.match(patt)){
         
          var xmlhttp = new XMLHttpRequest();
           xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-              if(xmlhttp.responseText == 1){
+            if (this.readyState == 4 && this.status == 200) {
+              if(this.responseText == 1){
                 box.style.border ="2px solid green";
                   if (id=="username"){
                     document.getElementById("answer").innerHTML = "";
@@ -99,15 +103,16 @@
                 box.style.border="2px solid red";
                   if (id=="username"){
                     document.getElementById("answer").innerHTML = "Username already exists";
-                  } else{
+                  }
+                  else {
                     document.getElementById("answer2").innerHTML = "Email already exists";
                   }
               }
             }
           };
-          xmlhttp.open("POST", "./action/action_register.php", true);
+          xmlhttp.open("POST", "src/php/action/action_register.php", true);
           xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-          xmlhttp.send(cred);
+          xmlhttp.send(bool);
 
 
       } else{
@@ -128,8 +133,9 @@
         document.getElementById("answer2").innerHTML = '';
       }
     }
-    showMessage();
+    // showMessage();
 
   }
   </script>
 </html>
+

@@ -1,10 +1,8 @@
 <?php 
 class database{
 	public $host = "localhost";
-	// default username to connect database with xampp
-	public $username = "root";
-	// default password to connect database with xampp
-	public $password = "";
+	public $username = "wbd";
+	public $password = "12345678";
 	public $database = "wbd";
 	public $connection;
  
@@ -34,13 +32,13 @@ class database{
 		return $result;
 	}
  
-	function login($username,$password)
+	function login($email,$password)
 	{
-		$result = $this->connection->query("select * from user where username='$username' and password='$password'");
+		$result = $this->connection->query("select * from user where email='$email' and password='$password'");
 		if($result->num_rows >0){
 			while (True){
 				$cookie = $this->generateCookie();
-				$query = mysqli_query($this->connection,"update user set cookie='$cookie' where username='$username'");
+				$query = mysqli_query($this->connection,"update user set cookie='$cookie' where email='$email'");
 				if (query){
 					break;
 				} else {
@@ -53,24 +51,29 @@ class database{
 				setcookie('superuser',1,time() + (86400 * 30), '/' );
 			}
 
+			else {
+				setcookie('superuser',0,time() + (86400 * 30), '/' );
+			}
+
 			setcookie('username', $cookie, time() + (86400 * 30), '/');
 
 			return TRUE;
 		} else {
 				return FALSE;
-		}
-		
-
-		
+		}	
 	}
 
-	
+	function getUsername($cookie) {
+		$search = $this->connection->query("select username from user where cookie='$cookie'");
+		$result = $search->fetch_array()[0];
+		return $result;
+	}
+
 	function relogin($cookie){
 
 		$result = $this->connection->query("select * from user where cookie='$cookie'");
 
 		if ($result->num_rows > 0){
-
 			setcookie('username', $cookie, time() + (86400 * 30), '/');
 			return TRUE;
 		} else {
@@ -81,6 +84,8 @@ class database{
 	function logout($cookie){
 		$sql =  mysqli_query($this->connection,"update user set cookie=NULL where cookie='$cookie'");
 		if($sql){
+			setcookie('username','',0,'/');
+			setcookie('superuser','',0, '/' );
 			return TRUE;
 		} else{
 			return FALSE;

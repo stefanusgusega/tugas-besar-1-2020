@@ -1,6 +1,14 @@
 <?php
-setcookie('username','',0,'/');
-setcookie('superuser','',0, '/' );
+include './action/database.php';
 
-header("location:login.php")
+$user_db = new database();
+if ($user_db->logout($_COOKIE['username'])){
+	header("location:/");
+
+} else {
+	echo '<script language="javascript">';
+	echo 'alert("Error Occured!")';
+	echo '</script>';
+	header("location:/homepage");
+}
 ?>
