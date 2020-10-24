@@ -1,15 +1,15 @@
 <?php
-  // include './action/database.php';
-  // if(!isset($_COOKIE['username'])) {
-  //   setcookie('login', '1', time() +  (3000), '/');
+  include './action/database.php';
+  if(!isset($_COOKIE['username'])) {
+    setcookie('login', '1', time() +  (3000), '/');
 
-  //   header('location:login.php');
-  // } else {
-  //   $user_db = new database();
-  //   if(!$user_db->relogin($_COOKIE['username'])){
-  //     header('location:login.php');
-  //   }
-  // }
+    header('location:login.php');
+  } else {
+    $user_db = new database();
+    if(!$user_db->relogin($_COOKIE['username'])){
+      header('location:login.php');
+    }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,9 +38,10 @@
       </tr>
 
       <?php
-        include './action/database.php';
-        $username = 'willywangkong';
+        $cookie = $_COOKIE['username'];
         $user_db = new database();
+        $username = $user_db->getUsername($cookie);
+
         $result = $user_db->getHistory($username);
         $queryResult = mysqli_num_rows($result);
         if ($queryResult > 0){
@@ -55,13 +56,13 @@
             $address = $row['address'];
             echo
             "
-            <tr id = \"$productID\">
-            <th>$name</th>
-            <th>$amount</th>
-            <th>Rp $total</th>
-            <th>$date</th>
-            <th>$time</th>
-            <th>$address</th>
+            <tr id = info-detail-\"$productID\">
+            <th class = \"col-info\">$name</th>
+            <th class = \"col-info\">$amount</th>
+            <th class = \"col-info\">Rp $total</th>
+            <th class = \"col-info\">$date</th>
+            <th class = \"col-info\">$time</th>
+            <th class = \"col-info\">$address</th>
           </tr>
           ";      
           }

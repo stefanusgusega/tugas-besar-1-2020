@@ -1,0 +1,59 @@
+@font-face{
+	font-family:vogue;
+	src:url('../../assets/fonts/Vogue.ttf');
+}
+
+@font-face{
+	font-family:sansation;
+	src:url('../../assets/fonts/Sansation_Regular.ttf');
+}
+
+@font-face{
+	font-family:raleway;
+	src:url('../../assets/fonts/Raleway-Regular.ttf');
+}
+
+
+body{
+	background-color: #e8e8e8;
+    margin :0;
+}
+.page-title{
+    font-family: vogue;
+    margin-left: 20px;
+    text-align: center;
+}
+.col-title{
+    font-family: raleway;
+    background-color: #f2a07b;
+    font-weight: bold;
+    font-size: 15px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.col-info{
+    font-family: raleway;
+    background-color: #ffffff;
+    font-size: 13px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.row-info{
+    font-family: raleway;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding-right: 3vw;
+    padding-left: 3vw;
+}
+tr{
+    width: 300px;
+}
+
+.transaction-history{
+    margin-left: 12%;
+    margin-right: 12%;
+    align-self: center;
+}

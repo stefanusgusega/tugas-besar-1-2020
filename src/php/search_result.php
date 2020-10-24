@@ -14,7 +14,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../css/search.css">
+    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/search_res.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -51,10 +52,10 @@
             $image_path = $row['path'];
             echo
             "<div class=\"result-container\" id=\"result-container-$id\">
-            <span class=\"item-image\">
-              <img src=\"../../assets/images/$image_path\">
+            <span class=\"item-image-container\">
+              <img class=\"item-image\" src=\"../../assets/images/$image_path\">
             </span>
-            <span class=\"item-description\">
+            <span class=\"item-detail\">
               <div class=\"item-name\">$name</div>
               <div class=\"item-amount-sold\">Amount sold: $amountSold</div>
               <div class=\"item-price\">Price: Rp $price</div>

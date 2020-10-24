@@ -1,0 +1,47 @@
+body{
+	background-color: #e8e8e8;
+    margin :0;
+}
+.page-title{
+    font-family: vogue;
+    margin-left: 20px;
+}
+
+.results{
+    margin-left: 30px;
+    margin-right: 30px;
+    font-family: raleway;
+    font-size: 13px;
+    line-height: 20px;
+}
+.result-container{
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+}
+span{
+    display: inline-block;
+}
+.item-name{
+    font-size: 17px;
+    font-weight: bold;
+    padding-bottom: 0.8vw;
+}
+.item-image-container{
+    position: relative;
+    margin-left: 20px;
+    padding-top: 10px;
+}
+
+.item-image{
+    position: relative;
+    width: 200px;
+    height: auto;
+}
+.item-detail{
+    position: relative;
+    margin-left: 30px;
+    padding-top: 10px;
+    vertical-align: top;
+}

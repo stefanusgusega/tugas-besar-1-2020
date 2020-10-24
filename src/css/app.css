@@ -13,6 +13,17 @@ body{
 	src:url('../../assets/fonts/Vogue.ttf');
 }
 
+@font-face{
+	font-family:sansation;
+	src:url('../../assets/fonts/Sansation_Regular.ttf');
+}
+
+@font-face{
+	font-family:raleway;
+	src:url('../../assets/fonts/Raleway-Regular.ttf');
+}
+
+
 /* Add a black background color to the top navigation */
 .navbar {
   background-color: white;
