@@ -173,6 +173,105 @@ Anggota kelompok dapat diisi pada spreadsheet berikut : https://docs.google.com/
     * Cara menjalankan server
     * Screenshot tampilan aplikasi, dan
     * Penjelasan mengenai pembagian tugas masing-masing anggota (lihat formatnya pada bagian pembagian tugas).
+## Instalasi
+### APACHE
+
+#### Ubuntu 18.04
+- Install APACHE
+```
+sudo apt update
+sudo apt install apache2
+```
+- Adjusting the Firewall
+```
+sudo ufw app list
+sudo ufw allow 'Apache'
+```
+- Checking your web server
+```
+sudo systemctl status apache2
+```
+
+### MY SQL
+#### Windows
+1. Download MySQL Installer from https://dev.mysql.com/downloads/installer/ and execute it.
+2. Determine the setup type to use for the initial installation of MySQL products.
+3. Install the server instance (and products) and then begin the server configuration by first selecting one of the following levels of availability for the server instance:
+    - Standalone MySQL Server / Classic MySQL Replication (default), configures a server instance to run without high availability.
+    - InnoDB cluster, provides two configuration options based on MySQL Group Replication to:
+        - Configure multiple server instances in a sandbox InnoDB Cluster on the local host (for testing only).
+        - Create a new InnoDB Cluster and configure one seed instance or add a new server instance to an        existing InnoDB Cluster.
+4. Complete the configuration process by following the onscreen instructions. 
+
+#### Ubuntu 18.04
+1. Installing MySQL
+```
+sudo apt update
+sudo apt install mysql-server
+```
+2. Configure MySQL
+```
+sudo mysql_secure_installation
+```
+3. Adjusting User Authentication and Privileges (optional)
+For this case, our database is using database with user ___ and password ___ with database name is ___:
+- Open MySQL
+```
+sudo mysql
+```
+- Next, check which authentication method each of your MySQL user accounts use with the following command:
+```
+SELECT user,authentication_string,plugin,host FROM mysql.user;
+```
+```
+output
++------------------+-------------------------------------------+-----------------------+-----------+
+| user             | authentication_string                     | plugin                | host      |
++------------------+-------------------------------------------+-----------------------+-----------+
+| root             |                                           | auth_socket           | localhost |
+| mysql.session    | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE | mysql_native_password | localhost |
+| mysql.sys        | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE | mysql_native_password | localhost |
+| debian-sys-maint | *CC744277A401A7D25BE1CA89AFF17BF607F876FF | mysql_native_password | localhost |
++------------------+-------------------------------------------+-----------------------+-----------+
+4 rows in set (0.00 sec)
+```
+- Configure root account
+```
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+FLUSH PRIVILEGES;
+```
+- Create user
+```
+CREATE USER 'sammy'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'sammy'@'localhost' WITH GRANT OPTION;
+```
+### PHP
+
+
+#### Ubuntu 18.04
+1. Add PHP PPA Repository
+```
+sudo apt-get update
+sudo apt -y install software-properties-common
+sudo add-apt-repository ppa:ondrej/php
+sudo apt-get update
+```
+2. Install PHP 7.4 on Ubuntu 18.04
+```
+sudo apt -y install php7.4
+```
+3. Use the next command to install additional packages:
+
+```
+sudo apt-get install php7.4-xxx
+
+```
+4. Use this command to install php-mysql (a package that we use for this project)
+```
+sudo apt-get install php-mysql
+```
+
+
 
 ## Pengumpulan Tugas
 
