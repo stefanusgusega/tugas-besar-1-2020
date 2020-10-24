@@ -5,7 +5,11 @@
 
 body{
 	background-color: #e8e8e8;
-	margin :0;
+  margin :0;
+}
+
+form {
+  margin: 0;
 }
 
 @font-face{
@@ -57,7 +61,6 @@ body{
 	font-weight: bold;
   font-style: italic;
   font-family:Vogue;
-  ;
 }
 
 #search {
@@ -131,9 +134,10 @@ body{
 .menu li#name {
   height: auto;
   max-height: 142px;
-  font-size: 1.5vw;
+  font-size: 1.4vw;
   font-weight: bold;
   padding: 10px 20px;
+  /* font-family: vogue; */
 }
 
 .menu li#amount-sold {
@@ -156,7 +160,7 @@ img {
   max-height:134px;
 }
 
-.home-body {
+.after-navbar-body {
   font-family: Lato;
   margin-left: 90px;
   margin-right: 90px;
@@ -165,7 +169,7 @@ img {
 .home-body a {
   color: black;
 }
-.home-body a:hover {
+.after-navbar-body a:hover {
   
   color: #f2a07b;
 }
@@ -174,6 +178,7 @@ img {
   float:left;
   padding: 15px;
   width: 50%;
+  font-family:vogue;
 }
 
 #view-all-choco {
@@ -182,4 +187,9 @@ img {
   padding:15px;
   width: 50%;
   text-align: right;
+  font-family:vogue;
+}
+
+#details-name {
+  font-size: 2vw;
 }

@@ -15,6 +15,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="src/css/table.css">
+    <!-- <link rel="stylesheet" href="src/css/app.css"> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -88,18 +89,22 @@
 </body>
 <script type="text/javascript">
   
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function(){
-      if (xhttp.readyState == 4 && xhttp.status == 200){
-          document.getElementById("navbar").innerHTML += xhttp.responseText;
-      }
-  };
-  xhttp.open('GET', '../html/navbar.html', true); // note: link the footer.html
-  xhttp.send();
   window.onload = function() {
 
     <?php
 
+    include_once 'src/php/action/database.php';
+    if ($_COOKIE['superuser']==1) {
+      echo 'document.getElementById("add").innerHTML = "Add Chocolate";';
+      echo 'document.getElementById("add").href = "/add";';
+      echo 'document.getElementById("history").style.display = "none";';
+    }
+    else{
+      echo 'document.getElementById("history").innerHTML = "History";';
+      echo 'document.getElementById("history").href = "/history";';
+      echo 'document.getElementById("add").style.display = "none";';
+      
+    }
     if($_REQUEST['submit']){
         
         $name = $_POST['name'];
