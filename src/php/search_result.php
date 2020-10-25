@@ -22,10 +22,6 @@
     <title>Search Result</title>
 </head>
 <body>
-  <div id="navbar">
-    <?php include_once 'src/php/template/navbar.php'?>
-    <br><br><br>
-  </div>
   <div class="page-title">
     <h2>Result</h2>
   </div>
@@ -47,25 +43,25 @@
             $amountRemaining = $row['amountRemaining'];
             $description = $row['description'];
             $image_path = $row['path'];
-            echo
-            "<div class=\"result-container\" id=\"result-container-$id\">
-            <span class=\"item-image-container\">
-              <img class=\"item-image\" src=\"../../assets/images/$image_path\">
-            </span>
-            <span class=\"item-detail\">
-              <div class=\"item-name\">$name</div>
-              <div class=\"item-amount-sold\">Amount sold: $amountSold</div>
-              <div class=\"item-price\">Price: Rp $price</div>
-              <div class=\"item-amount-remaining\">Amount remaining: $amountRemaining</div>
-              <div class=\"item-description\">
-                <a>Description</a>
-                <div class=\"item-description\">$description</div>
-              </div>
-            </span>
-            <input type=\"submit\" value=\"BUY\">
-            <br>
-            
-            
+            echo "
+            <div class=\"result-container\" id=\"result-container-$id\">
+              <span class=\"item-image-container\">
+                <a href=\"./details/$id\">
+                  <img class=\"item-image\" src=\"../../assets/images/$image_path\">
+                </a>
+              </span>
+              <span class=\"item-detail\">
+                <a class=\"item-name\" href=\"./details/$id\">$name</a>
+                <div class=\"item-amount-sold\">Amount sold: $amountSold</div>
+                <div class=\"item-price\">Price: Rp $price</div>
+                <div class=\"item-amount-remaining\">Amount remaining: $amountRemaining</div>
+                <div class=\"item-description\">
+                  <a>Description</a>
+                  <div class=\"item-description\">$description</div>
+                </div>
+              </span>
+              <input onclick=\"goTo($id)\" type=\"button\" value=\"BUY\">
+              <br>
             </div>";
           }
         } else {
@@ -74,6 +70,10 @@
         mysqli_free_result($result);
       }
     ?>
+  </div>
+  <div id="navbar">
+    <?php include_once 'src/php/template/navbar.php'?>
+    <br><br><br>
   </div>
 </body>
 <script type="text/javascript">
@@ -89,14 +89,13 @@
       else{
         echo 'document.getElementById("history").innerHTML = "History";';
         echo 'document.getElementById("history").href = "/history";';
-        echo 'document.getElementById("add").style.display = "none";';
-        
+        echo 'document.getElementById("add").style.display = "none";';  
       }
-    ?>
-  
-
-    
+    ?>    
   };
+  function goTo(page){
+    location.replace("buy/"+page);
+  }
 
 </script>
 </html>

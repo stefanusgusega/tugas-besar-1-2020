@@ -1,8 +1,8 @@
 <?php 
 class database{
 	public $host = "localhost";
-	public $username = "wbd";
-	public $password = "12345678";
+	public $username = "root";
+	public $password = "";
 	public $database = "wbd";
 	public $connection;
  
@@ -111,15 +111,6 @@ class database{
 	}
 
 	// CHOCOLATE
-	function addStock($id,$stock){
-		$sql =  mysqli_query($this->connection,"update product set amount=amount+'$stock' where productID='$id'");
-		if ($sql){
-			return TRUE;
-		} else{
-			return FALSE;
-		}
-
-	}
 	function countId(){
 		$result = $this->connection->query("select * from product");
 		$id = $result->num_rows + 1;
@@ -141,7 +132,7 @@ class database{
 	}
 
 	function getHistory($username){
-		$result = $this->connection->query("select productID, name, amount, total, timestamp, address from transaction, product where username = '$username' and id = productID");
+		$result = $this->connection->query("select transactionID, productID, name, amount, total, timestamp, address from transaction, product where username = '$username' and id = productID");
 		return $result;
 	}
 
@@ -163,7 +154,7 @@ class database{
 			$innerHTML .= '<li>';
 			$innerHTML .= '<img src=assets/images/';
 			$innerHTML .= $row["path"];
-			$innerHTML .= ' class=img alt=photo>';
+			$innerHTML .= ' alt=photo>';
 			$innerHTML .= '</li>';
 			$innerHTML .= '<li id="name">';
 			$innerHTML .= $row["name"];
