@@ -50,12 +50,12 @@ if(!isset($_COOKIE['username'])) {
     <div id = "details-desc">
         <b>Description</b><br><br>
     </div>
-    <a href=<?php echo './buy-now.php?id='.$_GET["id"];?>>
+    <a href=<?php echo './buy-now';?>>
         <button id="buy-now" >
             
         </button>
     </a>
-    <a href=<?php echo './add-stock.php?id='.$_GET["id"];?>>
+    <a href=<?php echo './add-stock';?>>
         <button id="add-stock">
 
         </button>

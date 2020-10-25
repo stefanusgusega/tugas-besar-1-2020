@@ -39,6 +39,10 @@
             $_GET['id'] = parse($request);
             require_once __DIR__ . '/src/php/details.php';
             break;
+        case "/details/add-stock/" + $regex:
+            $_GET['id'] = parse($request);
+            require_once __DIR__ . '/src/php/add-stock.php';
+            break;
         default:
             http_response_code(404);
             require __DIR__ . '/php/404.php';
