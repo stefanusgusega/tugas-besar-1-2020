@@ -55,16 +55,16 @@ if(!isset($_COOKIE['username'])) {
         </div>
         <br>
         <br><br><br><br>
-        <div id="add-stock-2" style="display: none;">
-           <span class="box" onclick="addStock()">
+        <div id="add-stock-2" style="display: none;position: absolute;width: 15%;text-align: center" class="row ">
+          <div class="col-3 box"  onclick="addStock()">
             +
-          </span>
-          <span id="stock">
+          </div>
+          <div id="stock" class="col-3">
             0
-          </span>
-          <span class="box" onclick="minusStock()">
+          </div>
+          <div class="col-3 box" onclick="minusStock()">
             -
-          </span>
+          </div>
         </div>
     </div>
       <div>
