@@ -1,8 +1,8 @@
 <?php 
 class database{
 	public $host = "localhost";
-	public $username = "wbd";
-	public $password = "12345678";
+	public $username = "root";
+	public $password = "";
 	public $database = "wbd";
 	public $connection;
  
@@ -147,8 +147,13 @@ class database{
 
 	// HOMEPAGE
 
-	function showChoc($amount) {
-		$sort = $this->connection->query("select * from product where amountRemaining > 0 order by amountRemaining desc limit $amount");
+	function showChoc($viewAll) {
+		if ($viewAll) {
+			$sort = $this->connection->query("select * from product where amountRemaining > 0 order by amountRemaining desc");
+		}
+		else {
+			$sort = $this->connection->query("select * from product where amountRemaining > 0 order by amountRemaining desc limit 10");
+		}
 		// $sorted_arr = $sort->fetch_array();
 		$name_arr = array();
 		$innerHTML ='<div class="row">';

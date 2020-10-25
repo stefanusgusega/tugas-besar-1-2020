@@ -113,7 +113,7 @@ form {
   }
 }
 
-/*.after-navbar-body {
+.after-navbar-body {
   font-family: Lato;
   padding-left: 10%;
   padding-right:10%;
@@ -121,7 +121,7 @@ form {
   font-size: 1.5vw;
 }
 
-*/
+
 .col{
   width:50%;
   float:left;
