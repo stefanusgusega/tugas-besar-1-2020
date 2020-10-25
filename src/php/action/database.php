@@ -112,7 +112,7 @@ class database{
 
 	// CHOCOLATE
 	function addStock($id,$stock){
-		$sql =  mysqli_query($this->connection,"update product set amount=amount+'$stock' where productID='$id'");
+		$sql =  mysqli_query($this->connection,"update product set amountRemaining=amountRemaining+'$stock' where id='$id'");
 		if ($sql){
 			return TRUE;
 		} else{
