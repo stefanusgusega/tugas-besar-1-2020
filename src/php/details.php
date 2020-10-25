@@ -40,21 +40,43 @@ if(!isset($_COOKIE['username'])) {
         </div>
       </div>
       <div class="col details">
-        <div id = 'details-amountsold' class="det">
-            <b>Amount sold</b>: 
+        <div class="row det">
+          <div class="col-4 title">
+            <div> AMOUNT SOLD</div>
+          </div>
+          <div class="col-4">
+            <div id = 'details-amountsold' >
+            </div>
+          </div>
         </div>
-        
-        <div id = 'details-price' class="det" >
-            <b>Price</b>: Rp 
+        <div class="row det">
+          <div class="col-4 title">
+            <div> PRICE</div>
+          </div>
+          <div class="col-4">
+            <div id = 'details-price' >
+            </div>
+          </div>
         </div>
-        <div id = 'details-amount' class="det">
-            <b>Amount</b>: 
+        <div class="row det">
+          <div class="col-4 title">
+            <div> AMOUNT</div>
+          </div>
+          <div class="col-4">
+            <div id = 'details-amount' >
+            </div>
+          </div>
         </div>
-        <div id = "details-desc" class="det">
-            <b>Description</b><br><br>
+        <div class="det">
+            <div class="title col-s"> DESCRIPTION
+          
+            <div style="padding:10% 0"id = 'details-desc' >
+            </div>
         </div>
-        <br>
-        <br>
+      </div>
+          
+       
+        <br><br><br><br>
         <div id="add-stock-2" style="display: none;position: absolute;width: 15%;text-align: center" class="row ">
           <div class="col-3 box"  onclick="addStock()">
             +
@@ -134,6 +156,10 @@ if(!isset($_COOKIE['username'])) {
       }
   function add(){
     var x = parseInt(document.getElementById("stock").innerHTML);
+    if (x == 0){
+      alert("Cannot add 0 stock!");
+      return false;
+    }
     <?php 
     echo'var id='. $_GET['id'] .';';
     ?>
