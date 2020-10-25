@@ -93,9 +93,13 @@ if(!isset($_COOKIE['username'])) {
         <br><br><br><br>
         
     </div>
+    
     <form method="post">
         <input type="text" name="address" id="address" placeholder="Address">
     </form>
+    <div id="total-price">
+      Total price: Rp
+    </div>
       <div>
         <button id="cancel" onclick="cancel()" style="display: none">
           Cancel
@@ -153,6 +157,7 @@ if(!isset($_COOKIE['username'])) {
         echo 'document.getElementById("buy-now").innerHTML = "Buy Now";';
         echo 'document.getElementById("add-stock-1").style.display = "none";';
         echo 'document.getElementById("buy-now").onclick = function(){loadBuy()};';
+        echo 'document.getElementById("address").style.display="none";';
       }
     ?>
    
@@ -173,6 +178,7 @@ if(!isset($_COOKIE['username'])) {
         document.getElementById("cancel").style.display ="inline-block";
         document.getElementById("cancel").style.float = "right";
         document.getElementById("buy-now").onclick = function(){buy()};
+    document.getElementById("address").style.display = "block";
   }
   function add(){
     var x = parseInt(document.getElementById("amount-to-action").innerHTML);
@@ -251,12 +257,15 @@ if(!isset($_COOKIE['username'])) {
     document.getElementById("plus-minus").style.display ="none";
     document.getElementById("buy-now").onclick = function(){loadBuy()};
     document.getElementById("add-stock-1").onclick = function(){loadStock()};
-
+    document.getElementById("address").style.display = "none";
 
   }
   function addStock(){
       var x = parseInt(document.getElementById("amount-to-action").innerHTML);
       document.getElementById("amount-to-action").innerHTML = x+1;
+      var y = parseInt(document.getElementById("amount-to-action").innerHTML);
+      var tot = parseInt(document.getElementById("details-price").innerHTML)*y;
+      document.getElementById("total-price").innerHTML = "Total price: Rp "+tot;
     }
 
   function minusStock(){
@@ -264,6 +273,9 @@ if(!isset($_COOKIE['username'])) {
     if (x!= 0){
     document.getElementById("amount-to-action").innerHTML = x-1;
     }
+    var y = parseInt(document.getElementById("amount-to-action").innerHTML);
+    var tot = parseInt(document.getElementById("details-price").innerHTML)*y;
+    document.getElementById("total-price").innerHTML = "Total price: Rp "+tot;
   }
 
 </script>
