@@ -251,6 +251,7 @@ hr {
   margin:0 2%;
   padding:5px;
   background-color:white;
+  cursor: pointer;
 }
 .det{
   padding:1% 0;

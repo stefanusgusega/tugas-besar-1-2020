@@ -126,10 +126,11 @@ if(!isset($_COOKIE['username'])) {
   };
    function loadStock(){
         document.getElementById("add-stock-2").style.display ="block";
+        document.getElementById("add-stock-2").style.float ="block";
         document.getElementById("cancel").style.display ="inline-block";
         document.getElementById("cancel").style.float = "right";
         document.getElementById("add-stock-1").onclick = function(){add()};
-
+        
       }
   function add(){
     var x = parseInt(document.getElementById("stock").innerHTML);
