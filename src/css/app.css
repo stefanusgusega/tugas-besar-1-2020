@@ -32,6 +32,15 @@ form {
 	font-family:raleway;
 	src:url('../../assets/fonts/Raleway-Regular.ttf');
 }
+
+.address input[type=text]{
+  width: 100%;
+  height: 30px;
+
+}
+.address{
+  padding: 1% 10% 10% 10%;
+}
 .title{
   font-family: Vogue;
   opacity:1;
@@ -337,4 +346,11 @@ button {
 }
 /**/
 
+
+#address {
+  float:left;
+}
+#total-price {
+  float:right;
+}
 
