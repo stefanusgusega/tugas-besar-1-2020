@@ -1,8 +1,8 @@
 <?php 
 class database{
 	public $host = "localhost";
-	public $username = "root";
-	public $password = "Stefanus02092000";
+	public $username = "wbd";
+	public $password = "12345678";
 	public $database = "wbd";
 	public $connection;
  
@@ -111,6 +111,15 @@ class database{
 	}
 
 	// CHOCOLATE
+	function addStock($id,$stock){
+		$sql =  mysqli_query($this->connection,"update product set amount=amount+'$stock' where productID='$id'");
+		if ($sql){
+			return TRUE;
+		} else{
+			return FALSE;
+		}
+
+	}
 	function countId(){
 		$result = $this->connection->query("select * from product");
 		$id = $result->num_rows + 1;
@@ -154,7 +163,7 @@ class database{
 			$innerHTML .= '<li>';
 			$innerHTML .= '<img src=assets/images/';
 			$innerHTML .= $row["path"];
-			$innerHTML .= ' alt=photo>';
+			$innerHTML .= ' class=img alt=photo>';
 			$innerHTML .= '</li>';
 			$innerHTML .= '<li id="name">';
 			$innerHTML .= $row["name"];

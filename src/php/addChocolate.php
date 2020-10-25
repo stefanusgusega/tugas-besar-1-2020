@@ -18,8 +18,8 @@
     <title >Add Chocolate</title>
 </head>
 <body>
-	<div id="navbar">
- 	</div>
+	  <?php include_once 'src/php/template/navbar.php'?>
+
  	<br>
  	<div class="center-screen">
 
@@ -53,14 +53,18 @@
 </body>
 
 <script type="text/javascript">
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function(){
-	    if (xhttp.readyState == 4 && xhttp.status == 200){
-	        document.getElementById("navbar").innerHTML += xhttp.responseText;
-	    }
-	};
-	xhttp.open('GET', 'src/html/navbar.html', true); // note: link the footer.html
-	xhttp.send();
+	<?php
+	 if ($_COOKIE['superuser']==1) {
+        echo 'document.getElementById("add").innerHTML = "Add Chocolate";';
+        echo 'document.getElementById("add").href = "/add";';
+        echo 'document.getElementById("history").style.display = "none";';
+      }
+      else{
+        echo 'document.getElementById("history").innerHTML = "History";';
+        echo 'document.getElementById("history").href = "/history";';
+        echo 'document.getElementById("add").style.display = "none";';
+      }
+     ?>
 	window.onload = function() {
 
 		<?php
