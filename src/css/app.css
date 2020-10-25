@@ -28,7 +28,7 @@ form {
 }
 .title{
   font-weight: bold;
-  font-family: Times New Roman;
+  font-family: Vogue;
   opacity: 0.7;
 }
 
@@ -283,7 +283,7 @@ hr {
   cursor: pointer;
 }
 .det{
-  padding:2% 0;
+  padding:1% 0;
 
 }
 .box:hover{
