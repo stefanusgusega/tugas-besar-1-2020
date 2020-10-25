@@ -147,8 +147,13 @@ class database{
 
 	// HOMEPAGE
 
-	function showChoc($amount) {
-		$sort = $this->connection->query("select * from product where amountRemaining > 0 order by amountRemaining desc limit $amount");
+	function showChoc($viewAll) {
+		if ($viewAll) {
+			$sort = $this->connection->query("select * from product where amountRemaining > 0 order by amountRemaining desc");
+		}
+		else {
+			$sort = $this->connection->query("select * from product where amountRemaining > 0 order by amountRemaining desc limit 10");
+		}
 		// $sorted_arr = $sort->fetch_array();
 		$name_arr = array();
 		$innerHTML ='<div class="row">';
@@ -163,7 +168,7 @@ class database{
 			$innerHTML .= '<li>';
 			$innerHTML .= '<img src=assets/images/';
 			$innerHTML .= $row["path"];
-			$innerHTML .= ' alt=photo>';
+			$innerHTML .= ' class=img alt=photo>';
 			$innerHTML .= '</li>';
 			$innerHTML .= '<li id="name">';
 			$innerHTML .= $row["name"];

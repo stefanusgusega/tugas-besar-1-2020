@@ -129,7 +129,7 @@ form {
 }
 
 .col{
-  width:50%;
+  width:40%;
   float:left;
 }
 
@@ -207,6 +207,7 @@ form {
   padding: 15px;
   width: 50%;
   font-family:vogue;
+  font-weight:bold;
 }
 
 #view-all-choco {
@@ -216,6 +217,7 @@ form {
   width: 50%;
   text-align: right;
   font-family:vogue;
+  font-weight:bold;
 }
 
 #details-name {
@@ -250,12 +252,18 @@ hr {
   margin:5% 0;
 }
 .details{
-  padding: 5% 0%;
+  padding: 2% 0%;
+  width:60%;
+}
+.col-3{
+  width: 33%;
+  float: left;
+  padding:2%;
 }
 
+
 .box{
-  margin:0 2%;
-  padding:5px;
+  text-align:center;
   background-color:white;
   cursor: pointer;
 }
@@ -286,15 +294,6 @@ button {
   margin: 2% 2%;
   /* float:right;   */
 }
-
-button:hover {
-  /* background-color: #f2a07b; */
-  /* background-color: #000000;
-  transition-duration: 0.3s;
-  cursor: pointer; */
-  opacity:0.8;
-  cursor:pointer;
-}
-
+/**/
 
 

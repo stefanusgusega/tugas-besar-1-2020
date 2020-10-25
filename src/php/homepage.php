@@ -33,7 +33,7 @@
     <div id = "hello">
       Hello,
     </div>
-    <a href=./all-choco><div id = "view-all-choco">
+    <a href="#viewAll" onclick="viewAll()"><div id = "view-all-choco">
       View all chocolates
     </div></a>
     <div id = "menus">
@@ -63,15 +63,33 @@
       $db = new database();
       // show username
       $username = $db->getUsername($_COOKIE['username']);
-      $contents = $db->showChoc(10);
+      $contents = $db->showChoc(FALSE);
       // $username = $_COOKIE['username'];
       echo "document.getElementById(\"hello\").innerHTML += '$username';"; 
       echo "document.getElementById(\"menus\").innerHTML = '$contents';";
     ?>
+    
+    // var cred = "viewall=" + 
+    // var xmlhttp = new XMLHttpRequest() ;
+    // xmlhttp.onreadystatechange = function() {
+    //   if (this.readyState == 4 && this.status == 200) {
+
+    //   }
+    // }
+
   
 
     
   };
+
+  function viewAll() {
+    <?php 
+      $db = new database();
+      $contents = $db->showChoc(TRUE);  
+      echo "document.getElementById(\"menus\").innerHTML = '$contents';";
+      
+    ?>
+  }
 
 </script>
 </html>

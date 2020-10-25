@@ -43,25 +43,27 @@
             $amountRemaining = $row['amountRemaining'];
             $description = $row['description'];
             $image_path = $row['path'];
-            echo "
-            <div class=\"result-container\" id=\"result-container-$id\">
-              <span class=\"item-image-container\">
-                <a href=\"./details/$id\">
-                  <img class=\"item-image\" src=\"../../assets/images/$image_path\">
-                </a>
-              </span>
-              <span class=\"item-detail\">
-                <a class=\"item-name\" href=\"./details/$id\">$name</a>
-                <div class=\"item-amount-sold\">Amount sold: $amountSold</div>
-                <div class=\"item-price\">Price: Rp $price</div>
-                <div class=\"item-amount-remaining\">Amount remaining: $amountRemaining</div>
-                <div class=\"item-description\">
-                  <a>Description</a>
-                  <div class=\"item-description\">$description</div>
-                </div>
-              </span>
-              <input onclick=\"goTo($id)\" type=\"button\" value=\"BUY\">
-              <br>
+            $details = "/details/" . $id;
+            echo
+            "<div class=\"result-container\" id=\"result-container-$id\">
+            <a href=$details class=\"item-image-container name\">
+              <img class=\"item-image\" src=\"../../assets/images/$image_path\">
+            </a>
+            <span class=\"item-detail\">
+            <a class=\"name\" href=$details>
+              <div class=\"item-name\">$name</div>
+              </a> 
+              <div class=\"item-amount-sold\">Amount sold: $amountSold</div>
+              <div class=\"item-price\">Price: Rp $price</div>
+              <div class=\"item-amount-remaining\">Amount remaining: $amountRemaining</div>
+              <div class=\"item-description\">
+                <p>Description</p>
+                <div class=\"item-description\">$description</div>
+              </div>
+              </a>
+            </span>
+            <br>
+            
             </div>";
           }
         } else {
