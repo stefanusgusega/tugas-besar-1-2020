@@ -163,7 +163,7 @@ class database{
 			$innerHTML .= '<li>';
 			$innerHTML .= '<img src=assets/images/';
 			$innerHTML .= $row["path"];
-			$innerHTML .= ' alt=photo>';
+			$innerHTML .= ' class=img alt=photo>';
 			$innerHTML .= '</li>';
 			$innerHTML .= '<li id="name">';
 			$innerHTML .= $row["name"];
