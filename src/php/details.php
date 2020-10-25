@@ -92,10 +92,7 @@ if(!isset($_COOKIE['username'])) {
         <br><br><br><br>
         
     </div>
-    <form method="post">
-        <input type="text" name="address" id="address" placeholder="Address">
-    </form>
-      <div>
+         <div>
         <button id="cancel" onclick="cancel()" style="display: none">
           Cancel
         </button>
@@ -108,8 +105,14 @@ if(!isset($_COOKIE['username'])) {
 
         </button>
      </div>
+  </div><br><br>
+  <div class="address" id="adr" style="display:none">
+  Address
+   <form method="post">
+        <input type="text" name="address" id="address" placeholder="Input your address here">
+    </form>
   </div>
-  
+
 </body>
 <script type="text/javascript">
 
@@ -172,6 +175,7 @@ if(!isset($_COOKIE['username'])) {
         document.getElementById("cancel").style.display ="inline-block";
         document.getElementById("cancel").style.float = "right";
         document.getElementById("buy-now").onclick = function(){buy()};
+        document.getElementById("adr").style.display = "block";
   }
   function add(){
     var x = parseInt(document.getElementById("amount-to-action").innerHTML);
@@ -228,7 +232,7 @@ if(!isset($_COOKIE['username'])) {
 
     ?>
     var tot = price*x;
-    var cred = "id=" + id + "&stock=" + x + "&uname="+uname+"&total="+tot+"&tstamp="+tstamp;
+    var cred = "id=" + id + "&stock=" + x + "&uname="+uname+"&total="+tot+"&tstamp="+tstamp + "&address=" + document.getElementById("address").value;
     console.log(cred);
     var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
@@ -250,6 +254,7 @@ if(!isset($_COOKIE['username'])) {
     document.getElementById("plus-minus").style.display ="none";
     document.getElementById("buy-now").onclick = function(){loadBuy()};
     document.getElementById("add-stock-1").onclick = function(){loadStock()};
+    document.getElementById("adr").style.display = "none";
 
 
   }
