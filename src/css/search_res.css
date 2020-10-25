@@ -22,7 +22,8 @@ a {
     margin-left: 10vw;
     margin-right: 10vw;
     font-family: lato;
-    font-size: 13px;
+    font-size:calc(5px + 0.7vw);
+
     line-height: 20px;
 }
 .result-container{
@@ -30,6 +31,7 @@ a {
     border-color: #ffffff;
     border-width: 3px;
     margin-bottom: 10px;
+    padding:2%;
     background-color: #ffffff;
 }
 span{
@@ -37,10 +39,11 @@ span{
 }
 .item-name{
     text-decoration: none;
-    font-size: 17px;
+    font-size:calc(7px + 1vw);
     color: black;
     font-style: normal;
     font-weight: bold;
+
     padding-bottom: 0.8vw;
 }
 .item-image-container{
@@ -68,8 +71,9 @@ span{
 
 .item-image{
     position: relative;
-    width: 200px;
+    width: 15vw;
     height: auto;
+    min-width: 150px;
 }
 .item-detail{
     position: relative;
