@@ -39,7 +39,7 @@ CREATE TABLE `product` (
   `description` varchar(255) NOT NULL,
   `path` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +48,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'Dark chocolate',10,20000,20,'Cokelat yang low calories','0.jpg'),(2,'JJ8',0,99,88,'jj','1.jpg'),(3,'choco',0,11,11,'cjoco','3.png'),(4,'Susanti Gojali',0,228,288,'felfei','4.jpg'),(5,'coco',0,123,22,'enak','5.jpg'),(6,'fefe',0,11,2,'fef','6.jpg'),(7,'dwdw',0,22,22,'dwdw','7.jpg'),(8,'okok',0,99,99,'o','8.jpg'),(9,'jj`0',0,99,99,'jj','9.jpg'),(10,'Susanti Gojali',0,12,12,'dd','10.jpg');
+INSERT INTO `product` VALUES (1,'Dark chocolate',10,20000,20,'Cokelat yang low calories','0.jpg'),(2,'JJ8',0,99,88,'jj','1.jpg'),(3,'choco',0,11,11,'cjoco','3.png'),(4,'Susanti Gojali',7,228,281,'felfei','4.jpg'),(5,'coco',0,123,22,'enak','5.jpg'),(6,'fefe',0,11,2,'fef','6.jpg'),(7,'dwdw',0,22,22,'dwdw','7.jpg'),(8,'okok',0,99,99,'o','8.jpg'),(9,'jj`0',0,99,99,'jj','9.jpg'),(10,'Susanti Gojali',0,12,12,'dd','10.jpg'),(12,'5',0,5,20000,'2020-08-3-17 09:42:11','Bandung'),(13,'5',0,5,20000,'2020-08-3-17 09:42:11','Bandung'),(14,'5',0,5,20000,'2020-08-3-17 09:42:11','Bandung');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,7 +72,7 @@ CREATE TABLE `transaction` (
   KEY `transaction_ibfk_2` (`username`),
   CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`productID`) REFERENCES `product` (`id`),
   CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`username`) REFERENCES `user` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,7 +81,7 @@ CREATE TABLE `transaction` (
 
 LOCK TABLES `transaction` WRITE;
 /*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
-INSERT INTO `transaction` VALUES (1,10,'eeE',10,50000,'2020-10-25 03:33:19','Bandung'),(2,1,'eeE',2,40000,'2020-10-25 03:33:19','Jakarta'),(3,5,'eeE',5,20000,'2020-08-03 10:00:00','Bandung'),(4,5,'eeE',5,20000,'2020-08-03 10:00:00','Bandung'),(5,5,'eeE',5,20000,'2020-08-03 10:00:00','Bandung'),(6,5,'eeE',5,20000,'2020-08-03 10:00:00','Bandung');
+INSERT INTO `transaction` VALUES (1,10,'eeE',10,50000,'2020-10-25 03:33:19','Bandung'),(2,1,'eeE',2,40000,'2020-10-25 03:33:19','Jakarta'),(3,5,'eeE',5,20000,'2020-08-03 10:00:00','Bandung'),(4,5,'eeE',5,20000,'2020-08-03 10:00:00','Bandung'),(5,5,'eeE',5,20000,'2020-08-03 10:00:00','Bandung'),(6,5,'eeE',5,20000,'2020-08-03 10:00:00','Bandung'),(7,4,'eeE',3,684,'2020-10-25 05:13:58',''),(8,4,'eeE',4,912,'2020-10-25 05:15:07','');
 /*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,4 +124,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-25 17:49:23
+-- Dump completed on 2020-10-25 18:16:40
