@@ -75,6 +75,8 @@ if(!isset($_COOKIE['username'])) {
             </div>
 
             <div id="plus-minus" style="display: none;position: absolute;width: 15%;text-align: center" class="row ">
+              <div id="textAmount" style="text-align: left;padding-bottom: 5%">
+              </div>
               <div class="col-3 box"  onclick="addStock()">
                 +
               </div>
@@ -168,7 +170,8 @@ if(!isset($_COOKIE['username'])) {
         document.getElementById("cancel").style.display ="inline-block";
         document.getElementById("cancel").style.float = "right";
         document.getElementById("add-stock-1").onclick = function(){add()};
-        
+        document.getElementById("textAmount").innerHTML = "Amount to add";
+
       }
   function loadBuy() {
     document.getElementById("plus-minus").style.display ="block";
@@ -177,6 +180,8 @@ if(!isset($_COOKIE['username'])) {
         document.getElementById("cancel").style.float = "right";
         document.getElementById("buy-now").onclick = function(){buy()};
         document.getElementById("adr").style.display = "block";
+        document.getElementById("textAmount").innerHTML = "Amount to buy";
+
   }
   function add(){
     var x = parseInt(document.getElementById("amount-to-action").innerHTML);

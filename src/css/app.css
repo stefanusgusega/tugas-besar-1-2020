@@ -33,7 +33,7 @@ form {
 	src:url('../../assets/fonts/Raleway-Regular.ttf');
 }
 
-input[type=text]{
+.address input[type=text]{
   width: 100%;
   height: 30px;
 
