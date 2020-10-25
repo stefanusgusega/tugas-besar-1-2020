@@ -7,7 +7,13 @@ body{
 	background-color: #e8e8e8;
   margin :0;
 }
-
+a{
+  text-decoration: none;
+  color:black;
+}
+a:hover{
+  color:gray;
+}
 form {
   margin: 0;
 }
@@ -37,15 +43,8 @@ form {
 .desc{
   padding-left:10%;
   padding-right:10%;
-  font-family: Lato;
-  font-size: calc(8px+2vw);
-  /* float:left; */
-  /* padding-right:5%;
-  font-family: Lato;
-  margin-left: 5%;
-  margin-right: 5%;
-  float:left;
-  font-size: 1.5vw; */
+  
+
 }
 /* Add a black background color to the top navigation */
 .navbar {
@@ -266,12 +265,17 @@ hr {
 }
 
 .image{
-  width: 90%;
+  width: 100%;
   margin:5% 0;
+  box-shadow: 10px 10px gray;
 }
 .details{
   padding: 2% 0%;
   width:60%;
+  font-size: calc(7px + 0.7vw);
+}
+.title-desc{
+  font-weight: bold;
 }
 .col-3{
   width: 18%;
@@ -291,7 +295,7 @@ hr {
   cursor: pointer;
 }
 .det{
-  padding:1% 0;
+  padding:0.5% 2vw;
 
 }
 .box:hover{
