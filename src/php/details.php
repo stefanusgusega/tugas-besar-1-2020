@@ -73,11 +73,11 @@ if(!isset($_COOKIE['username'])) {
             <div style="padding:10% 0"id = 'details-desc' >
             </div>
 
-            <div id="add-stock-2" style="display: none;position: absolute;width: 15%;text-align: center" class="row ">
+            <div id="plus-minus" style="display: none;position: absolute;width: 15%;text-align: center" class="row ">
               <div class="col-3 box"  onclick="addStock()">
                 +
               </div>
-              <div id="stock" class="col-3">
+              <div id="amount-to-action" class="col-3">
                 0
               </div>
               <div class="col-3 box" onclick="minusStock()">
@@ -91,12 +91,19 @@ if(!isset($_COOKIE['username'])) {
         <br><br><br><br>
         
     </div>
+    <form method="post">
+        <input type="text" name="address" id="address" placeholder="Address">
+    </form>
       <div>
         <button id="cancel" onclick="cancel()" style="display: none">
           Cancel
         </button>
       
         <button id="add-stock-1">
+
+        </button>
+
+        <button id="buy-now">
 
         </button>
      </div>
@@ -134,14 +141,16 @@ if(!isset($_COOKIE['username'])) {
         echo 'document.getElementById("history").style.display = "none";';
         echo 'document.getElementById("add-stock-1").onclick = function(){loadStock()};';
         echo 'document.getElementById("add-stock-1").innerHTML = "Add Stock";';
+        echo 'document.getElementById("buy-now").style.display = "none";';
 
       }
       else{
         echo 'document.getElementById("history").innerHTML = "History";';
         echo 'document.getElementById("history").href = "/history";';
         echo 'document.getElementById("add").style.display = "none";';
-        echo 'document.getElementById("buy-now").innerHTML = "Add Stock";';
+        echo 'document.getElementById("buy-now").innerHTML = "Buy Now";';
         echo 'document.getElementById("add-stock-1").style.display = "none";';
+        echo 'document.getElementById("buy-now").onclick = function(){loadBuy()};';
       }
     ?>
    
@@ -149,15 +158,22 @@ if(!isset($_COOKIE['username'])) {
     
   };
    function loadStock(){
-        document.getElementById("add-stock-2").style.display ="block";
-        document.getElementById("add-stock-2").style.float ="block";
+        document.getElementById("plus-minus").style.display ="block";
+        document.getElementById("plus-minus").style.float ="block";
         document.getElementById("cancel").style.display ="inline-block";
         document.getElementById("cancel").style.float = "right";
         document.getElementById("add-stock-1").onclick = function(){add()};
         
       }
+  function loadBuy() {
+    document.getElementById("plus-minus").style.display ="block";
+        document.getElementById("plus-minus").style.float ="block";
+        document.getElementById("cancel").style.display ="inline-block";
+        document.getElementById("cancel").style.float = "right";
+        document.getElementById("buy-now").onclick = function(){buy()};
+  }
   function add(){
-    var x = parseInt(document.getElementById("stock").innerHTML);
+    var x = parseInt(document.getElementById("amount-to-action").innerHTML);
     if (x == 0){
       alert("Cannot add 0 stock!");
       return false;
@@ -184,23 +200,67 @@ if(!isset($_COOKIE['username'])) {
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send(cred);  
   }
+  function buy(){
+    // x itu amount
+    var x = parseInt(document.getElementById("amount-to-action").innerHTML);
+    if (x == 0){
+      alert("Cannot buy 0 chocolate!");
+      return false;
+    }
+    // productID
+    <?php 
+    echo'var id='. $_GET['id'] .';';
+    ?>
+    console.log(id);
+    console.log(x);
+    // username, price satuan, tstamp, addr
+    <?php
+      $db = new database();
+      $id = $_GET['id'];
+      $uname = $db->getUsername($_COOKIE['username']);
+      echo'var uname='. "'$uname'" .';';
+      $price = $db->getChocDetails($id, "price");
+      echo'var price=' . $price.';';
+      $timestamp = date('Y-m-d H:i:s');
+      echo'var tstamp='."'$timestamp'".';';
+      
+
+    ?>
+    var tot = price*x;
+    var cred = "id=" + id + "&stock=" + x + "&uname="+uname+"&total="+tot+"&tstamp="+tstamp;
+    console.log(cred);
+    var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            if(this.responseText) {
+              alert("Chocolate has been bought!"); 
+            }else{
+              alert("Error occured!");
+            }
+            location.reload();
+          }
+        };
+    xmlhttp.open("POST", "/src/php/action/action_buy.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send(cred);  
+  }
   function cancel(){
     document.getElementById("cancel").style.display ="none";
-    document.getElementById("add-stock-2").style.display ="none";
-
+    document.getElementById("plus-minus").style.display ="none";
+    document.getElementById("buy-now").onclick = function(){loadBuy()};
     document.getElementById("add-stock-1").onclick = function(){loadStock()};
 
 
   }
   function addStock(){
-      var x = parseInt(document.getElementById("stock").innerHTML);
-      document.getElementById("stock").innerHTML = x+1;
+      var x = parseInt(document.getElementById("amount-to-action").innerHTML);
+      document.getElementById("amount-to-action").innerHTML = x+1;
     }
 
   function minusStock(){
-    var x= parseInt(document.getElementById("stock").innerHTML);
+    var x= parseInt(document.getElementById("amount-to-action").innerHTML);
     if (x!= 0){
-    document.getElementById("stock").innerHTML = x-1;
+    document.getElementById("amount-to-action").innerHTML = x-1;
     }
   }
 

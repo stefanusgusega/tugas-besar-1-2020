@@ -231,6 +231,16 @@ form {
   font-weight:bold;
 }
 
+#buy-now {
+  float:right;
+}
+#buy-choco {
+  font-size:3vw;
+  padding-bottom: 9px;
+  font-weight: bold;
+  margin-bottom: 0;
+  font-family:vogue;
+}
 #details-name {
   font-size: 3vw;
   padding-bottom: 9px;
