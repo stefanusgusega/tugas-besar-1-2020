@@ -41,7 +41,7 @@ if(!isset($_COOKIE['username'])) {
       </div>
       <div class="col details">
         <div class="row det">
-          <div class="col-4 title">
+          <div class="col-4 title-desc">
             <div> AMOUNT SOLD</div>
           </div>
           <div class="col-4">
@@ -50,7 +50,7 @@ if(!isset($_COOKIE['username'])) {
           </div>
         </div>
         <div class="row det">
-          <div class="col-4 title">
+          <div class="col-4 title-desc">
             <div> PRICE</div>
           </div>
           <div class="col-4">
@@ -59,7 +59,7 @@ if(!isset($_COOKIE['username'])) {
           </div>
         </div>
         <div class="row det">
-          <div class="col-4 title">
+          <div class="col-4 title-desc">
             <div> AMOUNT</div>
           </div>
           <div class="col-4">
@@ -68,8 +68,9 @@ if(!isset($_COOKIE['username'])) {
           </div>
         </div>
         <div class="det">
-            <div class="title col-s"> DESCRIPTION
-          
+            <div class="col-s"> 
+              <div class="title-desc">DESCRIPTION
+              </div>
             <div style="padding:10% 0"id = 'details-desc' >
             </div>
 
