@@ -144,10 +144,11 @@ if(!isset($_COOKIE['username'])) {
         xmlhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
             if(this.responseText) {
-              alert("berhasil"); 
+              alert("Stock has been updated!"); 
             }else{
-              alert("gagal");
+              alert("Error occured!");
             }
+            location.reload();
           }
         };
     xmlhttp.open("POST", "/src/php/action/action_addstock.php", true);
