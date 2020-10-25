@@ -300,9 +300,17 @@ php -S 127.0.0.1:8000
 
 
 
-## Pengumpulan Tugas
+## Screenshot Program
+![register](./out/register.PNG)
+![login](./out/login.PNG)
+![homepage](./out/homepage.PNG)
+![buy-1](./out/buy-1.PNG)
+![buy-2](./out/buy-2.PNG)
+![history](./out/history.PNG)
+![add-stock-1](./out/add-stock-1.PNG)
+![add-stock-2](./out/add-stock-2.PNG)
+![add-choco](./out/add-choco.PNG)
 
-Deadline tugas adalah pada hari Minggu, 25 Oktober 2020 pukul 19.00 WIB. Waktu pengumpulan tugas yang dilihat adalah waktu push ke server Gitlab terakhir.
 
 ## Pembagian Tugas
 
@@ -330,19 +338,6 @@ Setiap anggota kelompok diwajibkan untuk mengerjakan bagian frontend dan backend
 8. History Transaction : 13518142
 9. Search : 13518142
 10. Database : 13518142, 13518101
-
-## Screenshot Program
-![register](./out/register.PNG)
-![login](./out/login.PNG)
-![homepage](./out/homepage.PNG)
-![buy-1](./out/buy-1.PNG)
-![buy-2](./out/buy-2.PNG)
-![history](./out/history.PNG)
-![add-stock-1](./out/add-stock-1.PNG)
-![add-stock-2](./out/add-stock-2.PNG)
-![add-choco](./out/add-choco.PNG)
-
-
 
 
 ## About
