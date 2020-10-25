@@ -84,6 +84,7 @@ if(!isset($_COOKIE['username'])) {
               <div class="col-3 box" onclick="minusStock()">
                 -
               </div>
+              
           </div>
         </div>
       </div>
