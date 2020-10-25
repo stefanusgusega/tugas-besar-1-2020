@@ -347,3 +347,10 @@ button {
 /**/
 
 
+#address {
+  float:left;
+}
+#total-price {
+  float:right;
+}
+
