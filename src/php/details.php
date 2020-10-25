@@ -31,13 +31,13 @@ if(!isset($_COOKIE['username'])) {
   <div class="desc">
     <div id = "details-name">
         
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col">
-              <div id = details-img>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col">
+        <div id = details-img>
               
-              </div>
+        </div>
       </div>
       <div class="col details">
         <div id = 'details-amountsold' class="det">
@@ -54,8 +54,8 @@ if(!isset($_COOKIE['username'])) {
             <b>Description</b><br><br>
         </div>
         <br>
-        <br>
-        <div id="addStock" style="display: none;">
+        <br><br><br><br>
+        <div id="add-stock-2" style="display: none;">
            <span class="box" onclick="addStock()">
             +
           </span>
@@ -69,10 +69,10 @@ if(!isset($_COOKIE['username'])) {
     </div>
       <div>
         <button id="cancel" onclick="cancel()" style="display: none">
-          cancel
+          Cancel
         </button>
       
-        <button id="button">
+        <button id="add-stock-1">
 
         </button>
      </div>
@@ -108,8 +108,8 @@ if(!isset($_COOKIE['username'])) {
         echo 'document.getElementById("add").innerHTML = "Add Chocolate";';
         echo 'document.getElementById("add").href = "/add";';
         echo 'document.getElementById("history").style.display = "none";';
-        echo 'document.getElementById("button").onclick = function(){loadStock()};';
-        echo 'document.getElementById("button").innerHTML = "Add Stock";';
+        echo 'document.getElementById("add-stock-1").onclick = function(){loadStock()};';
+        echo 'document.getElementById("add-stock-1").innerHTML = "Add Stock";';
 
       }
       else{
@@ -117,7 +117,7 @@ if(!isset($_COOKIE['username'])) {
         echo 'document.getElementById("history").href = "/history";';
         echo 'document.getElementById("add").style.display = "none";';
         echo 'document.getElementById("buy-now").innerHTML = "Add Stock";';
-        echo 'document.getElementById("add-stock").style.display = "none";';
+        echo 'document.getElementById("add-stock-1").style.display = "none";';
       }
     ?>
    
@@ -125,10 +125,12 @@ if(!isset($_COOKIE['username'])) {
     
   };
    function loadStock(){
-        document.getElementById("addStock").style.display ="block";
+        document.getElementById("add-stock-2").style.display ="block";
+        document.getElementById("add-stock-2").style.float ="block";
         document.getElementById("cancel").style.display ="inline-block";
-        document.getElementById("button").onclick = function(){add()};
-
+        document.getElementById("cancel").style.float = "right";
+        document.getElementById("add-stock-1").onclick = function(){add()};
+        
       }
   function add(){
     var x = parseInt(document.getElementById("stock").innerHTML);
@@ -156,9 +158,9 @@ if(!isset($_COOKIE['username'])) {
   }
   function cancel(){
     document.getElementById("cancel").style.display ="none";
-    document.getElementById("addStock").style.display ="none";
+    document.getElementById("add-stock-2").style.display ="none";
 
-    document.getElementById("button").onclick = function(){loadStock()};
+    document.getElementById("add-stock-1").onclick = function(){loadStock()};
 
 
   }

@@ -28,7 +28,17 @@ form {
 }
 
 .desc{
-  padding-left:5%;
+  padding-left:10%;
+  padding-right:10%;
+  font-family: Lato;
+  font-size: 1.5vw;
+  /* float:left; */
+  /* padding-right:5%;
+  font-family: Lato;
+  margin-left: 5%;
+  margin-right: 5%;
+  float:left;
+  font-size: 1.5vw; */
 }
 /* Add a black background color to the top navigation */
 .navbar {
@@ -102,6 +112,15 @@ form {
     font-size: 3vw;
   }
 }
+
+.after-navbar-body {
+  font-family: Lato;
+  padding-left: 10%;
+  padding-right:10%;
+  float:left;
+  font-size: 1.5vw;
+}
+
 
 .col{
   width:50%;
@@ -227,10 +246,12 @@ hr {
 .details{
   padding: 5% 0%;
 }
+
 .box{
   margin:0 2%;
   padding:5px;
   background-color:white;
+  cursor: pointer;
 }
 .det{
   padding:1% 0;
@@ -238,11 +259,13 @@ hr {
 .box:hover{
   opacity: 0.5;
 }
-#button{
-  float:left;
+#add-stock-1{
+  float:right;
   text-align: center;
   height:auto;
 }
+
+
 button {
   /*float:right;*/
   padding: 10px 20px;
@@ -254,7 +277,8 @@ button {
   border-radius: 5px;
   border:none;
   width:auto;
-  margin: 0% 2%;  
+  margin: 2% 2%;
+  /* float:right;   */
 }
 
 button:hover {
