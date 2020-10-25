@@ -27,9 +27,8 @@ form {
 	src:url('../../assets/fonts/Raleway-Regular.ttf');
 }
 .title{
-  font-weight: bold;
   font-family: Vogue;
-  opacity: 0.7;
+  opacity:1;
 }
 
 #details-desc{
