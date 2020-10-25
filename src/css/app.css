@@ -32,6 +32,9 @@ form {
   opacity: 0.7;
 }
 
+#details-desc{
+  font-family:Times New Roman;
+}
 .desc{
   padding-left:10%;
   padding-right:10%;
