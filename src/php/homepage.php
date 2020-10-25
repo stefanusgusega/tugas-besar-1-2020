@@ -33,9 +33,9 @@
     <div id = "hello">
       Hello,
     </div>
-    <a href="#viewAll" onclick="viewAll()"><div id = "view-all-choco">
+    <a href="#viewAll" onclick="viewAll()" id = "view-all-choco">
       View all chocolates
-    </div></a>
+    </a>
     <div id = "menus">
       <div class="row">
       

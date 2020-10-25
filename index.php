@@ -35,13 +35,9 @@
         case '/search_result' :
             require __DIR__ . '/src/php/search_result.php';
             break;
-        case '/details/'+ $regex:
+        case '/details/' + $regex:
             $_GET['id'] = parse($request);
             require_once __DIR__ . '/src/php/details.php';
-            break;
-        case "/details/add-stock/" + $regex:
-            $_GET['id'] = parse($request);
-            require_once __DIR__ . '/src/php/add-stock.php';
             break;
         default:
             http_response_code(404);

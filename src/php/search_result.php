@@ -46,10 +46,13 @@
             $details = "/details/" . $id;
             echo
             "<div class=\"result-container\" id=\"result-container-$id\">
+            <div class=\"row\">
+            <div class=\"col-search-1\">
             <a href=$details class=\"item-image-container name\">
               <img class=\"item-image\" src=\"../../assets/images/$image_path\">
             </a>
-            <span class=\"item-detail\">
+            </div>
+            <div class=\"col-search-2 item-detail\">
             <a class=\"name\" href=$details>
               <div class=\"item-name\">$name</div>
               </a> 
@@ -61,8 +64,9 @@
                 <div class=\"item-description\">$description</div>
               </div>
               </a>
-            </span>
+            </div>
             <br>
+            </div>
             
             </div>";
           }
