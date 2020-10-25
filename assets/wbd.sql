@@ -39,7 +39,7 @@ CREATE TABLE `product` (
   `description` varchar(255) NOT NULL,
   `path` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -60,19 +60,19 @@ DROP TABLE IF EXISTS `transaction`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `transaction` (
-  `transactionID` int(11) NOT NULL,
+  `transactionID` int(11) NOT NULL AUTO_INCREMENT,
   `productID` int(11) DEFAULT NULL,
-  `username` varchar(255) NOT NULL,
+  `username` varchar(255) DEFAULT NULL,
   `amount` int(8) NOT NULL,
   `total` int(8) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `address` varchar(255) NOT NULL,
-  PRIMARY KEY (`transactionID`,`username`),
-  UNIQUE KEY `username` (`username`),
+  PRIMARY KEY (`transactionID`),
   KEY `transaction_ibfk_1` (`productID`),
+  KEY `transaction_ibfk_2` (`username`),
   CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`productID`) REFERENCES `product` (`id`),
   CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`username`) REFERENCES `user` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,7 +81,7 @@ CREATE TABLE `transaction` (
 
 LOCK TABLES `transaction` WRITE;
 /*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
-INSERT INTO `transaction` VALUES (1,10,'eeE',10,50000,'2020-10-17 03:10:10','Bandung'),(2,1,'willywangkong',2,40000,'2020-10-16 13:38:25','Jakarta');
+INSERT INTO `transaction` VALUES (1,10,'eeE',10,50000,'2020-10-25 03:33:19','Bandung'),(2,1,'eeE',2,40000,'2020-10-25 03:33:19','Jakarta'),(3,5,'eeE',5,20000,'2020-08-03 10:00:00','Bandung'),(4,5,'eeE',5,20000,'2020-08-03 10:00:00','Bandung'),(5,5,'eeE',5,20000,'2020-08-03 10:00:00','Bandung'),(6,5,'eeE',5,20000,'2020-08-03 10:00:00','Bandung');
 /*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +111,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('eeE','ee@gmail.com','EE',0,NULL),('felicia123','aa@gmail.com','aa',0,NULL),('feliciagojali','abc123@gmail.com','123456',1,'mrl9,]&vo#'),('lia','lia@lia.com','lia',0,'6/#b%j=!.d'),('pepe','pepe@email.com','1234',0,NULL),('saya','saya','saya',0,NULL),('ss','ss','ss',0,'-qmkv\"%bau'),('ssaa','ueue@uu.com','jjj',0,NULL),('willywangkong','ass@gmail.com','123455',0,NULL),('zzz','zzz','zzz',0,NULL);
+INSERT INTO `user` VALUES ('eeE','ee@gmail.com','EE',0,'co7yfdfj5o'),('felicia123','aa@gmail.com','aa',0,NULL),('feliciagojali','abc123@gmail.com','123456',1,'mrl9,]&vo#'),('lia','lia@lia.com','lia',0,NULL),('pepe','pepe@email.com','1234',0,NULL),('saya','saya','saya',0,NULL),('ss','ss','ss',0,'-qmkv\"%bau'),('ssaa','ueue@uu.com','jjj',0,NULL),('willywangkong','ass@gmail.com','123455',0,NULL),('zzz','zzz','zzz',0,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -124,4 +124,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-25  9:25:10
+-- Dump completed on 2020-10-25 17:49:23
