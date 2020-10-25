@@ -1,159 +1,127 @@
--- phpMyAdmin SQL Dump
--- version 4.6.6deb5
--- https://www.phpmyadmin.net/
+-- MariaDB dump 10.17  Distrib 10.4.14-MariaDB, for Win64 (AMD64)
 --
--- Host: localhost:3306
--- Generation Time: Oct 19, 2020 at 02:33 PM
--- Server version: 5.7.31-0ubuntu0.18.04.1
--- PHP Version: 7.2.24-0ubuntu0.18.04.7
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: wbd
+-- ------------------------------------------------------
+-- Server version	10.4.14-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Database: `wbd`
+-- Current Database: `wbd`
 --
 
--- --------------------------------------------------------
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `wbd` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+
+USE `wbd`;
 
 --
 -- Table structure for table `product`
 --
 
+DROP TABLE IF EXISTS `product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `product` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `amountSold` int(8) NOT NULL,
   `price` int(8) NOT NULL,
   `amountRemaining` int(8) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `path` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `path` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `name`, `amountSold`, `price`, `amountRemaining`, `description`, `path`) VALUES
-(1, 'Dark chocolate', 10, 20000, 20, 'Cokelat yang low calories', ''),
-(2, 'JJ8', 0, 99, 88, 'jj', '../../../assets/images/Screenshot from 2020-10-17 19-46-01.png'),
-(3, 'choco', 0, 11, 11, 'cjoco', '3.png'),
-(4, 'Susanti Gojali', 0, 228, 288, 'felfei', '4.png'),
-(5, 'coco', 0, 123, 22, 'enak', '5.png'),
-(6, 'fefe', 0, 11, 2, 'fef', '6.png'),
-(7, 'dwdw', 0, 22, 22, 'dwdw', '7.png'),
-(8, 'okok', 0, 99, 99, 'o', '8.png'),
-(9, 'jj`0', 0, 99, 99, 'jj', '9.png'),
-(10, 'Susanti Gojali', 0, 12, 12, 'dd', '10.jpg');
-
--- --------------------------------------------------------
+LOCK TABLES `product` WRITE;
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES (1,'Dark chocolate',10,20000,20,'Cokelat yang low calories','0.jpg'),(2,'JJ8',0,99,88,'jj','1.jpg'),(3,'choco',0,11,11,'cjoco','3.png'),(4,'Susanti Gojali',0,228,288,'felfei','4.jpg'),(5,'coco',0,123,22,'enak','5.jpg'),(6,'fefe',0,11,2,'fef','6.jpg'),(7,'dwdw',0,22,22,'dwdw','7.jpg'),(8,'okok',0,99,99,'o','8.jpg'),(9,'jj`0',0,99,99,'jj','9.jpg'),(10,'Susanti Gojali',0,12,12,'dd','10.jpg');
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `transaction`
 --
 
+DROP TABLE IF EXISTS `transaction`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `transaction` (
-  `productID` int(8) NOT NULL,
+  `transactionID` int(11) NOT NULL,
+  `productID` int(11) DEFAULT NULL,
   `username` varchar(255) NOT NULL,
   `amount` int(8) NOT NULL,
   `total` int(8) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `address` varchar(255) NOT NULL
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `address` varchar(255) NOT NULL,
+  PRIMARY KEY (`transactionID`,`username`),
+  UNIQUE KEY `username` (`username`),
+  KEY `transaction_ibfk_1` (`productID`),
+  CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`productID`) REFERENCES `product` (`id`),
+  CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`username`) REFERENCES `user` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `transaction`
 --
 
-INSERT INTO `transaction` (`productID`, `username`, `amount`, `total`, `timestamp`, `address`) VALUES
-(1, 'willywangkong', 2, 40000, '2020-10-16 13:38:25', 'Jakarta');
-
--- --------------------------------------------------------
+LOCK TABLES `transaction` WRITE;
+/*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
+INSERT INTO `transaction` VALUES (1,10,'eeE',10,50000,'2020-10-17 03:10:10','Bandung'),(2,1,'willywangkong',2,40000,'2020-10-16 13:38:25','Jakarta');
+/*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `superuser` tinyint(1) NOT NULL DEFAULT '0',
-  `cookie` varchar(255) DEFAULT NULL
+  `superuser` tinyint(1) NOT NULL DEFAULT 0,
+  `cookie` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`username`),
+  UNIQUE KEY `name` (`username`),
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `cookie` (`cookie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`username`, `email`, `password`, `superuser`, `cookie`) VALUES
-('eeE', 'ee@gmail.com', 'EE', 0, NULL),
-('felicia123', 'aa@gmail.com', 'aa', 0, NULL),
-('feliciagojali', 'abc123@gmail.com', '123456', 1, 'mrl9,]&vo#'),
-('pepe', 'pepe@email.com', '1234', 0, NULL),
-('saya', 'saya', 'saya', 0, NULL),
-('ss', 'ss', 'ss', 0, '-qmkv\"%bau'),
-('ssaa', 'ueue@uu.com', 'jjj', 0, NULL),
-('willywangkong', 'ass@gmail.com', '123455', 0, NULL),
-('zzz', 'zzz', 'zzz', 0, NULL);
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES ('eeE','ee@gmail.com','EE',0,NULL),('felicia123','aa@gmail.com','aa',0,NULL),('feliciagojali','abc123@gmail.com','123456',1,'mrl9,]&vo#'),('lia','lia@lia.com','lia',0,'6/#b%j=!.d'),('pepe','pepe@email.com','1234',0,NULL),('saya','saya','saya',0,NULL),('ss','ss','ss',0,'-qmkv\"%bau'),('ssaa','ueue@uu.com','jjj',0,NULL),('willywangkong','ass@gmail.com','123455',0,NULL),('zzz','zzz','zzz',0,NULL);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `product`
---
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `transaction`
---
-ALTER TABLE `transaction`
-  ADD PRIMARY KEY (`productID`),
-  ADD UNIQUE KEY `username` (`username`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`username`),
-  ADD UNIQUE KEY `name` (`username`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `cookie` (`cookie`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `product`
---
-ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT for table `transaction`
---
-ALTER TABLE `transaction`
-  MODIFY `productID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `transaction`
---
-ALTER TABLE `transaction`
-  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`productID`) REFERENCES `product` (`id`),
-  ADD CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`username`) REFERENCES `user` (`username`);
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-10-25  9:25:10
