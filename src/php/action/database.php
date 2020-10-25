@@ -1,8 +1,8 @@
 <?php 
 class database{
 	public $host = "localhost";
-	public $username = "root";
-	public $password = "";
+	public $username = "wbd";
+	public $password = "12345678";
 	public $database = "wbd";
 	public $connection;
  
@@ -163,7 +163,7 @@ class database{
 			$innerHTML .= '<a href=./details/';
 			$innerHTML .= urlencode($row["id"]);
 			$innerHTML .= '>';
-			$innerHTML .= '<div class="col-1 menu">';
+			$innerHTML .= '<div class="col-1 menu choco">';
 			$innerHTML .= '<ul>';
 			$innerHTML .= '<li>';
 			$innerHTML .= '<img src=assets/images/';
