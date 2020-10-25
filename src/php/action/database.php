@@ -2,7 +2,7 @@
 class database{
 	public $host = "localhost";
 	public $username = "root";
-	public $password = "Stefanus02092000";
+	public $password = "";
 	public $database = "wbd";
 	public $connection;
  
@@ -194,11 +194,11 @@ class database{
 	}
 
 	function buyItem($productID,$username,$amount,$total,$timestamp,$address) {
-		$last_transactionID_table=$this->connection->query("select transactionID from transaction order by transactionID desc limit 1");
-		$last_transactionID = $last_transactionID_table->fetch_array()[0];
-		$query = $this->connection->query("insert into transaction values ('$last_transactionID','$productID','$username','$amount','$total','$timestamp', '$address' )");
+		// $last_transactionID_table=$this->connection->query("select transactionID from transaction order by transactionID desc limit 1");
+		// $last_transactionID = $last_transactionID_table->fetch_array()[0];
+		$query = $this->connection->query("insert into transaction values (NULL,'$productID','$username','$amount','$total','$timestamp', '$address' )");
 		$decreasestock = $this->connection->query("update product set amountRemaining=amountRemaining-'$amount' where id='$productID'");
-		if ($query && $decreasestock) {
+		if ($query && $decreasestock ) {
 			return true;
 		} else {
 			return false;
