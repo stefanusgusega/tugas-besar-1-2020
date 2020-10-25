@@ -121,6 +121,12 @@ form {
   font-size: 1.5vw;
 }
 
+.page-title{
+  font-family: vogue;
+  margin-left: 50px;
+  font-size: 20px;
+  text-align: center;
+}
 
 .col{
   width:50%;

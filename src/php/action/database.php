@@ -188,7 +188,14 @@ class database{
 		return $res;
 	}
 
-
+	function buyItem($productID,$username,$amount,$total,$timestamp,$address) {
+		$query = $this->connection->query("insert into transaction values (NULL,'$productID','$username','$amount','$total','$timestamp', '$address' )");
+		if ($query) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 } 
 
