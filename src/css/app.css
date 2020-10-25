@@ -28,7 +28,17 @@ form {
 }
 
 .desc{
-  padding-left:5%;
+  padding-left:10%;
+  padding-right:10%;
+  font-family: Lato;
+  font-size: 1.5vw;
+  /* float:left; */
+  /* padding-right:5%;
+  font-family: Lato;
+  margin-left: 5%;
+  margin-right: 5%;
+  float:left;
+  font-size: 1.5vw; */
 }
 /* Add a black background color to the top navigation */
 .navbar {
@@ -102,6 +112,15 @@ form {
     font-size: 3vw;
   }
 }
+
+.after-navbar-body {
+  font-family: Lato;
+  padding-left: 10%;
+  padding-right:10%;
+  float:left;
+  font-size: 1.5vw;
+}
+
 
 .col{
   width:50%;

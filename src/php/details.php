@@ -31,13 +31,13 @@ if(!isset($_COOKIE['username'])) {
   <div class="desc">
     <div id = "details-name">
         
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col">
-              <div id = details-img>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col">
+        <div id = details-img>
               
-              </div>
+        </div>
       </div>
       <div class="col details">
         <div id = 'details-amountsold' class="det">
@@ -69,7 +69,7 @@ if(!isset($_COOKIE['username'])) {
     </div>
       <div>
         <button id="cancel" style="display: none">
-          cancel
+          Cancel
         </button>
       
         <button id="button">
