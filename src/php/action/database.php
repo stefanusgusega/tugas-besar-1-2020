@@ -198,7 +198,8 @@ class database{
 		// $last_transactionID = $last_transactionID_table->fetch_array()[0];
 		$query = $this->connection->query("insert into transaction values (NULL,'$productID','$username','$amount','$total','$timestamp', '$address' )");
 		$decreasestock = $this->connection->query("update product set amountRemaining=amountRemaining-'$amount' where id='$productID'");
-		if ($query && $decreasestock ) {
+		$increaseamountsold=$this->connection->query("update product set amountSold=amountSold+'$amount' where id='$productID'");
+		if ($query && $decreasestock && $increaseamountsold) {
 			return true;
 		} else {
 			return false;
