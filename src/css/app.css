@@ -347,10 +347,15 @@ button {
 /**/
 
 
-#address {
+
+#total-price {
   float:left;
 }
-#total-price {
-  float:right;
-}
 
+.address{
+  margin: 2% 5% 5% 5%;
+}
+.address input[type=text]{
+  width:90%;
+  height: 30px;
+}

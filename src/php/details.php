@@ -96,13 +96,7 @@ if(!isset($_COOKIE['username'])) {
         
     </div>
     
-    <form method="post">
-        <input type="text" name="address" id="address" placeholder="Address">
-    </form>
-    <div id="total-price">
-      Total price: Rp
-    </div>
-      <div>
+         <div>
         <button id="cancel" onclick="cancel()" style="display: none">
           Cancel
         </button>
@@ -116,7 +110,12 @@ if(!isset($_COOKIE['username'])) {
         </button>
      </div>
   </div><br><br>
+ 
+   
   <div class="address" id="adr" style="display:none">
+    <div id="total-price">
+    </div>
+    <br>
   Address
    <form method="post">
         <input type="text" name="address" id="address" placeholder="Input your address here">
@@ -165,7 +164,6 @@ if(!isset($_COOKIE['username'])) {
         echo 'document.getElementById("buy-now").innerHTML = "Buy Now";';
         echo 'document.getElementById("add-stock-1").style.display = "none";';
         echo 'document.getElementById("buy-now").onclick = function(){loadBuy()};';
-        echo 'document.getElementById("address").style.display="none";';
       }
     ?>
    
@@ -188,6 +186,7 @@ if(!isset($_COOKIE['username'])) {
         document.getElementById("cancel").style.float = "right";
         document.getElementById("buy-now").onclick = function(){buy()};
         document.getElementById("adr").style.display = "block";
+        document.getElementById("address").style.display = "block";
         document.getElementById("textAmount").innerHTML = "Amount to buy";
 
   }
