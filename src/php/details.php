@@ -68,7 +68,7 @@ if(!isset($_COOKIE['username'])) {
         </div>
     </div>
       <div>
-        <button id="cancel" style="display: none">
+        <button id="cancel" onclick="cancel()" style="display: none">
           cancel
         </button>
       
@@ -120,18 +120,47 @@ if(!isset($_COOKIE['username'])) {
         echo 'document.getElementById("add-stock").style.display = "none";';
       }
     ?>
-    function loadStock(){
-      document.getElementById("addStock").style.display ="block";
-      document.getElementById("cancel").style.display ="inline-block";
-      document.getElementById("button").onclick = function(){add()};
-
-    }
+   
 
     
   };
+   function loadStock(){
+        document.getElementById("addStock").style.display ="block";
+        document.getElementById("cancel").style.display ="inline-block";
+        document.getElementById("button").onclick = function(){add()};
 
+      }
   function add(){
-     var x = parseInt(document.getElementById("stock").innerHTML);
+    var x = parseInt(document.getElementById("stock").innerHTML);
+    <?php 
+    echo'var id='. $_GET['id'] .';';
+    ?>
+    console.log(id);
+    console.log(x);
+    var cred = "id=" + id + "&stock=" + x;
+    console.log(cred);
+    var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            if(this.responseText) {
+              alert("Stock has been updated!"); 
+            }else{
+              alert("Error occured!");
+            }
+            location.reload();
+          }
+        };
+    xmlhttp.open("POST", "/src/php/action/action_addstock.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send(cred);  
+  }
+  function cancel(){
+    document.getElementById("cancel").style.display ="none";
+    document.getElementById("addStock").style.display ="none";
+
+    document.getElementById("button").onclick = function(){loadStock()};
+
+
   }
   function addStock(){
       var x = parseInt(document.getElementById("stock").innerHTML);

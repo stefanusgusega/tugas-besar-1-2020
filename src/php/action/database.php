@@ -111,6 +111,15 @@ class database{
 	}
 
 	// CHOCOLATE
+	function addStock($id,$stock){
+		$sql =  mysqli_query($this->connection,"update product set amountRemaining=amountRemaining+'$stock' where id='$id'");
+		if ($sql){
+			return TRUE;
+		} else{
+			return FALSE;
+		}
+
+	}
 	function countId(){
 		$result = $this->connection->query("select * from product");
 		$id = $result->num_rows + 1;
