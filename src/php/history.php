@@ -49,6 +49,7 @@
         $queryResult = mysqli_num_rows($result);
         if ($queryResult > 0){
           while ($row = mysqli_fetch_assoc($result)){
+            $transactionID = $row['transactionID'];
             $productID = $row['productID'];
             $name = $row['name'];
             $amount = $row['amount'];
@@ -59,15 +60,17 @@
             $address = $row['address'];
             echo
             "
-            <tr id = info-detail-\"$productID\">
-            <th class = \"col-info\">$name</th>
-            <th class = \"col-info\">$amount</th>
-            <th class = \"col-info\">Rp $total</th>
-            <th class = \"col-info\">$date</th>
-            <th class = \"col-info\">$time</th>
-            <th class = \"col-info\">$address</th>
-          </tr>
-          ";      
+            <tr id = info-detail-\"$transactionID\">
+              <th class = \"col-info\">
+                <a class=\"col-info-name\" href=\"./details/$transactionID\">$name</a>
+              </th>
+              <th class = \"col-info\">$amount</th>
+              <th class = \"col-info\">Rp $total</th>
+              <th class = \"col-info\">$date</th>
+              <th class = \"col-info\">$time</th>
+              <th class = \"col-info\">$address</th>
+            </tr>
+            ";      
           }
         } else {
           echo

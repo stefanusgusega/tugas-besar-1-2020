@@ -26,18 +26,41 @@ if(!isset($_COOKIE['username'])) {
   <?php //include_once 'src/php/template/navbar.php'?>
   <?php include_once 'src/php/template/navbar.php'?>
   <br><br><br>
-  <br>
-  <br>
+  <div class="page-title">Buy Chocolate</div>
   <div class="desc">
+  <div class="result-container">
+              <span class="item-image-container">
+                <a href="./details/$id">
+                  <img class="item-image" src="../../assets/images/$image_path">
+                </a>
+              </span>
+              <span class="item-detail">
+                <a class="item-name\" href="./details/$id">$name</a>
+                <div class="item-amount-sold">Amount sold: $amountSold</div>
+                <div class="item-price">Price: Rp $price</div>
+                <div class="item-amount-remaining">Amount remaining: $amountRemaining</div>
+                <div class="item-description">
+                  <a>Description</a>
+                  <div class="item-description">$description</div>
+                </div>
+              </span>
+              <input type="submit" value="BUY">
+              <br>
+            </div>";
+
+
+
+
+
     <div id = "details-name">
         
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col">
-        <div id = details-img>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col">
+              <div id = details-img>
               
-        </div>
+              </div>
       </div>
       <div class="col details">
         <div id = 'details-amountsold' class="det">
@@ -54,8 +77,8 @@ if(!isset($_COOKIE['username'])) {
             <b>Description</b><br><br>
         </div>
         <br>
-        <br><br><br><br>
-        <div id="add-stock-2" style="display: none;">
+        <br>
+        <div id="addStock" style="display: none;">
            <span class="box" onclick="addStock()">
             +
           </span>
@@ -68,11 +91,11 @@ if(!isset($_COOKIE['username'])) {
         </div>
     </div>
       <div>
-        <button id="cancel" onclick="cancel()" style="display: none">
-          Cancel
+        <button id="cancel" style="display: none">
+          cancel
         </button>
       
-        <button id="add-stock-1">
+        <button id="button">
 
         </button>
      </div>
@@ -108,8 +131,8 @@ if(!isset($_COOKIE['username'])) {
         echo 'document.getElementById("add").innerHTML = "Add Chocolate";';
         echo 'document.getElementById("add").href = "/add";';
         echo 'document.getElementById("history").style.display = "none";';
-        echo 'document.getElementById("add-stock-1").onclick = function(){loadStock()};';
-        echo 'document.getElementById("add-stock-1").innerHTML = "Add Stock";';
+        echo 'document.getElementById("button").onclick = function(){loadStock()};';
+        echo 'document.getElementById("button").innerHTML = "Add Stock";';
 
       }
       else{
@@ -117,52 +140,21 @@ if(!isset($_COOKIE['username'])) {
         echo 'document.getElementById("history").href = "/history";';
         echo 'document.getElementById("add").style.display = "none";';
         echo 'document.getElementById("buy-now").innerHTML = "Add Stock";';
-        echo 'document.getElementById("add-stock-1").style.display = "none";';
+        echo 'document.getElementById("add-stock").style.display = "none";';
       }
     ?>
-   
+    function loadStock(){
+      document.getElementById("addStock").style.display ="block";
+      document.getElementById("cancel").style.display ="inline-block";
+      document.getElementById("button").onclick = function(){add()};
+
+    }
 
     
   };
-   function loadStock(){
-        document.getElementById("add-stock-2").style.display ="block";
-        document.getElementById("add-stock-2").style.float ="block";
-        document.getElementById("cancel").style.display ="inline-block";
-        document.getElementById("cancel").style.float = "right";
-        document.getElementById("add-stock-1").onclick = function(){add()};
-        
-      }
+
   function add(){
-    var x = parseInt(document.getElementById("stock").innerHTML);
-    <?php 
-    echo'var id='. $_GET['id'] .';';
-    ?>
-    console.log(id);
-    console.log(x);
-    var cred = "id=" + id + "&stock=" + x;
-    console.log(cred);
-    var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            if(this.responseText) {
-              alert("Stock has been updated!"); 
-            }else{
-              alert("Error occured!");
-            }
-            location.reload();
-          }
-        };
-    xmlhttp.open("POST", "/src/php/action/action_addstock.php", true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send(cred);  
-  }
-  function cancel(){
-    document.getElementById("cancel").style.display ="none";
-    document.getElementById("add-stock-2").style.display ="none";
-
-    document.getElementById("add-stock-1").onclick = function(){loadStock()};
-
-
+     var x = parseInt(document.getElementById("stock").innerHTML);
   }
   function addStock(){
       var x = parseInt(document.getElementById("stock").innerHTML);

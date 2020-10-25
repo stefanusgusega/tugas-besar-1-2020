@@ -76,16 +76,25 @@ body{
     font-family: 'Times New Roman', Times, serif;
     background-color: #f2a07b;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 17px;
     padding-top: 8px;
     padding-bottom: 8px;
 }
 .col-info{
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Times New Roman';
     background-color: #ffffff;
-    font-size: 13px;
+    font-weight: lighter;
+    font-size: 15px;
     padding-top: 3px;
     padding-bottom: 3px;
+}
+.col-info-name{
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+.col-info-name:hover{
+    font-weight: bold;
 }
 .row-info{
     font-family: 'Times New Roman', Times, serif;

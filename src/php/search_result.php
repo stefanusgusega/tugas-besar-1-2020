@@ -22,10 +22,6 @@
     <title>Search Result</title>
 </head>
 <body>
-  <div id="navbar">
-    <?php include_once 'src/php/template/navbar.php'?>
-    <br><br><br>
-  </div>
   <div class="page-title">
     <h2>Result</h2>
   </div>
@@ -68,7 +64,6 @@
             </span>
             <br>
             
-            
             </div>";
           }
         } else {
@@ -77,6 +72,10 @@
         mysqli_free_result($result);
       }
     ?>
+  </div>
+  <div id="navbar">
+    <?php include_once 'src/php/template/navbar.php'?>
+    <br><br><br>
   </div>
 </body>
 <script type="text/javascript">
@@ -92,14 +91,13 @@
       else{
         echo 'document.getElementById("history").innerHTML = "History";';
         echo 'document.getElementById("history").href = "/history";';
-        echo 'document.getElementById("add").style.display = "none";';
-        
+        echo 'document.getElementById("add").style.display = "none";';  
       }
-    ?>
-  
-
-    
+    ?>    
   };
+  function goTo(page){
+    location.replace("buy/"+page);
+  }
 
 </script>
 </html>

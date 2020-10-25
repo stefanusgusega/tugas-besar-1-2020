@@ -175,6 +175,13 @@ Anggota kelompok dapat diisi pada spreadsheet berikut : https://docs.google.com/
     * Penjelasan mengenai pembagian tugas masing-masing anggota (lihat formatnya pada bagian pembagian tugas).
 ## Instalasi
 ### APACHE
+#### Windows
+1. Download XAMPP from https://www.apachefriends.org/download.html
+2. Run the installer that has been downloaded
+3. Follow the instalation step
+4. Open XAMPP to check if it work
+5. Click start tombols in Apache's row to use APACHE
+
 
 #### Ubuntu 18.04
 - Install APACHE
@@ -246,7 +253,15 @@ CREATE USER 'sammy'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON *.* TO 'sammy'@'localhost' WITH GRANT OPTION;
 ```
 ### PHP
-
+#### Windows
+1. Download XAMPP from https://www.apachefriends.org/download.html
+2. Run the installer that has been downloaded
+3. Follow the instalation step
+4. To run php open terminal and type 
+```
+php -S localhost:xxxx
+```
+with 'xxxx' as port
 
 #### Ubuntu 18.04
 1. Add PHP PPA Repository

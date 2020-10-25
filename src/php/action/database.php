@@ -141,7 +141,7 @@ class database{
 	}
 
 	function getHistory($username){
-		$result = $this->connection->query("select productID, name, amount, total, timestamp, address from transaction, product where username = '$username' and id = productID");
+		$result = $this->connection->query("select transactionID, productID, name, amount, total, timestamp, address from transaction, product where username = '$username' and id = productID");
 		return $result;
 	}
 
@@ -163,7 +163,7 @@ class database{
 			$innerHTML .= '<li>';
 			$innerHTML .= '<img src=assets/images/';
 			$innerHTML .= $row["path"];
-			$innerHTML .= ' class=img alt=photo>';
+			$innerHTML .= ' alt=photo>';
 			$innerHTML .= '</li>';
 			$innerHTML .= '<li id="name">';
 			$innerHTML .= $row["name"];
