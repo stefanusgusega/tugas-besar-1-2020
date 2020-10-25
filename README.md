@@ -331,7 +331,16 @@ Setiap anggota kelompok diwajibkan untuk mengerjakan bagian frontend dan backend
 9. Search : 13518142
 10. Database : 13518142, 13518101
 
-## Screnshot Program
+## Screenshot Program
+![register](./out/register.PNG)
+![login](./out/login.PNG)
+![homepage](./out/homepage.PNG)
+![buy-1](./out/buy-1.PNG)
+![buy-2](./out/buy-2.PNG)
+![history](./out/history.PNG)
+![add-stock-1](./out/add-stock-1.PNG)
+![add-stock-2](./out/add-stock-2.PNG)
+![addchoco](./out/addchoco.PNG)
 
 
 
