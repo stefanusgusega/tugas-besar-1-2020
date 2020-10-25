@@ -340,7 +340,7 @@ Setiap anggota kelompok diwajibkan untuk mengerjakan bagian frontend dan backend
 ![history](./out/history.PNG)
 ![add-stock-1](./out/add-stock-1.PNG)
 ![add-stock-2](./out/add-stock-2.PNG)
-![addchoco](./out/addchoco.PNG)
+![add-choco](./out/add-choco.PNG)
 
 
 
